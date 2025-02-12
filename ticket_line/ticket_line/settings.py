@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-t60%j@bge4k5k+ys207@8+b#^2x&r=!=wc48tovhye&&$__p$8
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'False'
 
 # 許可されるホスト
-ALLOWED_HOSTS = ['shuku.pythonanywhere.com']
+ALLOWED_HOSTS = ['Ikesan.pythonanywhere.com']
 
 # アプリケーション
 INSTALLED_APPS = [
