@@ -13,7 +13,7 @@ from django.core.wsgi import get_wsgi_application
 import sys
 
 # プロジェクトディレクトリを追加
-path = '/home/Ikesan/TeamA/ticket_line'
+path = '/home/Ikesan/TeamA'
 if path not in sys.path:
     sys.path.append(path)
 
