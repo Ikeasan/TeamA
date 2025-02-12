@@ -13,10 +13,10 @@ from django.core.wsgi import get_wsgi_application
 import sys
 
 # プロジェクトディレクトリを追加
-path = '/home/Ikesan/TeamA'
+path = "/home/yourusername/ticket_line"
 if path not in sys.path:
     sys.path.append(path)
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TeamA.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ticket_line.settings')
 
 application = get_wsgi_application()
