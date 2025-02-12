@@ -62,7 +62,7 @@ TEMPLATES = [
 ]
 
 # WSGIアプリケーション（エラーが出るためいったん消してる）
-# WSGI_APPLICATION = 'ticket_line.wsgi.application'
+WSGI_APPLICATION = 'ticket_line.wsgi.application'
 
 # データベース設定
 DATABASES = {
