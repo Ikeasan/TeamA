@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}メール認証{% endblock %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/email_confirm.css' %}">
+<div class="container mt-5 text-center">
+    <h1>メールアドレスが確認されました</h1>
+    <p>ご登録ありがとうございます。次のステップに進んでください。</p>
+</div>
+{% endblock %}

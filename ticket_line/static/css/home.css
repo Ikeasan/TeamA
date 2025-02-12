@@ -1,0 +1,124 @@
+/* 全体の設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    text-align: center; /* テキスト中央揃え */
+}
+
+/* コンテナの中央揃え */
+.container {
+    margin-top: 50px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ヘッダー部分 */
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* サブタイトル */
+p.lead {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+/* フォーム部分 */
+form {
+    margin-top: 20px;
+    display: inline-block; /* 中央揃え */
+}
+
+form input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* ナビゲーションボタン */
+.nav-link img {
+    margin-top: 20px;
+    width: 30%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-link:hover img {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 矢印デザイン */
+a b font {
+    font-size: 2rem;
+    color: #333;
+    margin: 0 10px;
+}
+
+a b font:hover {
+    color: #007bff;
+}
+
+/* ボーダー装飾 */
+div[style*="border: solid 3px"] {
+    margin: 30px auto;
+    width: 80%;
+    height: 2px;
+    background-color: #000;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    form input[type="text"] {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p.lead {
+        font-size: 1rem;
+    }
+
+    .nav-link img {
+        width: 50%;
+    }
+
+    a b font {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,85 @@
+/* 全体の設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* 見出しのスタイル */
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* 説明文のスタイル */
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* フォーム全体のスタイル */
+form {
+    width: 300px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 入力フィールドのスタイル */
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* ボタンのスタイル */
+input[type="submit"] {
+    width: 45%;
+    padding: 10px;
+    margin: 10px 2.5%;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 送信ボタンのスタイル */
+input[type="submit"][value="送信"] {
+    background-color: #4E95D9;
+    color: white;
+}
+
+input[type="submit"][value="送信"]:hover {
+    background-color: #357ABD;
+}
+
+/* 戻るボタンのスタイル */
+input[type="submit"][value="戻る"] {
+    background-color: #ccc;
+    color: black;
+}
+
+input[type="submit"][value="戻る"]:hover {
+    background-color: #aaa;
+}
+
+/* ラベルの隠し方 */
+.visually-hidden {
+    display: none;
+}

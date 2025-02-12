@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post-display {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 300px;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.post {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+/* 投稿セクションのスタイル */
+/* div {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+} */
+
+/* 画像のスタイル */
+div img {
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* フォームのスタイル */
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form input[type="radio"] {
+    margin-right: 5px;
+}
+
+form input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+form input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* ボタンのスタイル */
+form button {
+    padding: 10px 20px;
+    background-color: #4E95D9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+form button:hover {
+    background-color: #357bb3;
+}
+
+/* ラジオボタンとラベルのスタイル */
+form font {
+    display: block;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+input[type="radio"] + label {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    div {
+        width: 95%;
+    }
+
+    form input[type="text"] {
+        width: 90%;
+    }
+
+    form font {
+        font-size: 0.9rem;
+    }
+}

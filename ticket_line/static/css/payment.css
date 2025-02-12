@@ -1,0 +1,69 @@
+/* セクションのボーダースタイル */
+div[style*="border: solid 3px #000;"] {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 3px solid #000;
+}
+
+/* ヘッダータイトル */
+h2 {
+    font-size: 2rem;
+    color: #4CAF50; /* 緑色で目立たせる */
+    margin-top: 30px;
+}
+
+/* 商品情報のテキスト */
+a {
+    font-size: 1.2rem;
+    color: #555;
+    display: block;
+    /* margin-bottom: 20px; */
+}
+
+/* ラジオボタンのスタイル */
+form input[type="radio"] {
+    margin: 10px;
+    accent-color: #007bff; /* 青色の選択を目立たせる */
+}
+
+/* 支払方法タイトル */
+div[style*="border: solid 3px #000;"]:nth-child(3) {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* ボタンスタイル */
+button {
+    padding: 15px 30px;
+    background-color: #28a745; /* 緑色で目立たせる */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #218838; /* ホバー時に濃い緑色 */
+    transform: scale(1.05);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    a {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+}
+

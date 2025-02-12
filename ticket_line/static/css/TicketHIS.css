@@ -1,0 +1,109 @@
+/* コンテナ */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* 申し込み履歴の各ブロック */
+div {
+    border: solid 3px #4E95D9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトルと結果 */
+font {
+    color: #333;
+}
+
+/* ライブの名前部分 */
+font[size="5"] {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* 結果の部分 */
+font[size="10"] {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4E95D9;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* 結果待ち、落選、当選の色を分ける */
+font[size="10"]:first-of-type {
+    color: #f39c12; /* 結果待ち */
+}
+
+font[size="10"]:nth-of-type(2) {
+    color: #e74c3c; /* 落選 */
+}
+
+font[size="10"]:nth-of-type(3) {
+    color: #2ecc71; /* 当選 */
+}
+
+/* 日付部分 */
+div a {
+    font-size: 1rem;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+}
+
+/* ボタンやリンクのスタイル */
+button, a {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #4E95D9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+button:hover, a:hover {
+    background-color: #3584b2;
+}
+.ticket-history-container {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.ticket-item {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    font[size="5"] {
+        font-size: 1.2rem;
+    }
+
+    font[size="10"] {
+        font-size: 1.8rem;
+    }
+
+    div {
+        padding: 15px;
+    }
+}

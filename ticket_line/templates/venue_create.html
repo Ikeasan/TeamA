@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}会場登録{% endblock %}
+
+{% block content %}
+<h1>会場登録フォーム</h1>
+
+<!-- エラーの詳細を表示 -->
+{% if form.errors or formset.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for field, errors in form.errors.items %}
+                <li><strong>{{ field }}</strong>: {{ errors|join:", " }}</li>
+            {% endfor %}
+            {% for form in formset %}
+                {% for field, errors in form.errors.items %}
+                    <li><strong>{{ field }}</strong>: {{ errors|join:", " }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<!-- 登録フォーム -->
+<form method="post" enctype="multipart/form-data" action="{% url 'venue_create' %}">
+    {% csrf_token %}
+    <!-- 会場名を入力して地図を検索 -->
+    <input type="text" name="venue_name" placeholder="会場名を入力（例: 東京ドーム）" value="{{ selected_venue }}">
+    <button type="submit">表示</button>
+    <!-- 会場情報入力 -->
+    {{ form.as_p }}
+    
+    <!--<p>名前：{{ form.name }}</p>
+    <p>住所：{{ form.address }}</p>
+    <p>電話番号：{{ form.phone_number }}</p>
+    <p>GoogleマップURL：{{ form.google_map_url }}</p>
+    <p>収容人数：{{ form.capacity }}</p>
+    <p>追加情報：{{ form.additional_info }}</p>
+
+    <p>フロアマップ：{{ form.venue_image }}</p>-->
+
+    <!-- デバッグ情報を表示 -->
+    <p>デバッグ情報:</p>
+    <ul>
+        <li>selected_venue: {{ selected_venue }}</li>
+        <li>map_url: {{ map_url }}</li>
+    </ul>
+
+    
+
+        
+    
+    <h3>画像をアップロード</h3>
+    {{ formset.management_form }}
+    {% for subform in formset %}
+        <div>
+            {{ subform.image }} <!-- 画像フィールド -->
+            {{ subform.name }}  <!-- 名前フィールド -->
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">登録</button>
+</form>
+
+<!-- Googleマップの表示 -->
+{% if selected_venue %}
+    <h2>{{ selected_venue }} の地図</h2>
+    {% if map_url %}
+        <iframe 
+            src="{{ map_url }}" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    {% else %}
+        <p>該当する会場が見つかりませんでした。</p>
+    {% endif %}
+{% else %}
+    <p>デバッグ: selected_venue が設定されていません。</p>
+{% endif %}
+
+<!-- エラーメッセージの表示 -->
+<!--{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}-->
+
+
+<!--<h1>会場を選択</h1>
+    <select id="venueSelect">
+        <option value="">会場を選択してください</option>
+    </select>
+
+    <div id="mapContainer"></div>
+
+    {% load static %}
+    <script>
+        fetch("{% static 'map.json' %}")  // Djangoの静的ファイルとして取得
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("JSONデータ:", data);  // デバッグ用ログ
+                const select = document.getElementById("venueSelect");
+                const mapContainer = document.getElementById("mapContainer");
+    
+                // JSONのキー（会場名）を取得してセレクトボックスに追加
+                for (let venue in data) {
+                    let option = document.createElement("option");
+                    option.value = venue;
+                    option.textContent = venue;
+                    select.appendChild(option);
+                }
+    
+                // 会場を選択したときに地図を表示
+                select.addEventListener("change", function () {
+                    const venueName = this.value;
+                    if (venueName) {
+                        mapContainer.innerHTML = data[venueName]; // iframeを表示
+                    } else {
+                        mapContainer.innerHTML = ""; // 選択解除時は空
+                    }
+                });
+            })
+            .catch(error => console.error("JSONの読み込みエラー:", error));
+    </script>-->
+{% endblock %}

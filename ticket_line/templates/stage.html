@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% load static %} <!-- static タグを使用するために追加 -->
+
+{% block title %}会場{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/stage.css' %}">
+    <br>
+
+    <form action="/form.php" method="post">
+        <div>
+            <label for="event" class="visually-hidden"></label>
+            <input type="text" size="50" placeholder="イベント" name="event">
+        </div>
+    </form>
+
+    <br>
+
+    <b>
+        <a href="{% url 'bookmark' %}">
+            <button type="submit">ブックマークする</button>
+        </a>
+
+        <br>
+        <br>
+
+        <div class="tabs-container">
+            <!-- ラジオボタンとラベルをタブメニューとして使用 -->
+            <input type="radio" name="tab" id="tab1" checked>
+            <label for="tab1" class="tab-label">詳細</label>
+
+            <input type="radio" name="tab" id="tab2">
+            <label for="tab2" class="tab-label">チケット</label>
+
+            <input type="radio" name="tab" id="tab3">
+            <label for="tab3" class="tab-label">会場</label>
+
+            <input type="radio" name="tab" id="tab4">
+            <label for="tab4" class="tab-label">コメント</label>
+
+            <!-- タブコンテンツ -->
+            <div class="tab-content" id="content1">
+                <p>詳細情報がここに表示されます。</p>
+            </div>
+            <div class="tab-content" id="content2">
+                <p>チケット詳細がここに表示されます。</p>
+            </div>
+            <div class="tab-content" id="content3">
+                <p>会場情報がここに表示されます。</p>
+                <!-- 会場情報 -->
+                <div class="venue-info">
+                    <h2>会場情報</h2>
+                    <table border="1" cellpadding="10">
+                        <tr>
+                            <th>項目</th>
+                            <th>詳細</th>
+                        </tr>
+                        <tr>
+                            <td>面積</td>
+                            <td>建築面積 ／ 46,755m² (普段、東京ドームの面積と言われているものです。)</td>
+                        </tr>
+                        <tr>
+                            <td>容積</td>
+                            <td>約124万m³</td>
+                        </tr>
+                        <tr>
+                            <td>階数</td>
+                            <td>地下2階・地上6階</td>
+                        </tr>
+                        <tr>
+                            <td>高さ</td>
+                            <td>
+                                最高部の高さ ／ 地上 56.190m<br>
+                                グラウンド面からの高さ ／ 61.690m<br>
+                                グラウンド面 ／ 地下 5.500m
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>収容人数</td>
+                            <td>55,000人（野球時 約43,500人）</td>
+                        </tr>
+                        <tr>
+                            <td>グラウンド</td>
+                            <td>
+                                面積 ／ 13,000m²<br>
+                                両翼 ／ 100m<br>
+                                外野センターまで ／ 122m<br>
+                                フェンスの高さ ／ 4m
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>電話番号</td>
+                            <td>03-5800-9999</td>
+                        </tr>
+                        <tr>
+                            <td>住所</td>
+                            <td>〒112-0004 東京都文京区後楽1丁目3-61</td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+
+                <!-- Googleマップ -->
+                <h3>アクセス</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6479.67314665646!2d139.74879608023105!3d35.70563906225646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c4782eed4f3%3A0x5058b288249e640e!2z5p2x5Lqs44OJ44O844Og!5e0!3m2!1sja!2sjp!4v1731640684938!5m2!1sja!2sjp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <br>
+                <img src="image/座席.png" width="50%" alt="座席の画像">
+                <a link rel="stylesheet" href="{% url 'userpost' %}">
+                    <button type="submit">ユーザー投稿</button>
+                </a>
+            </div>
+            <div class="tab-content" id="content4">
+                <p>コメント情報がここに表示されます。</p>
+            </div>
+        </div>
+    </b>
+
+{% endblock %}

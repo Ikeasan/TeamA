@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}＜運営者＞ TOP{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/OPE_TOP.css' %}">
+<h1>イベント一覧</h1>
+<b style="color: #09f;"><font size="5">運営者専用</font></b>
+
+<br><br>
+
+<!-- 検索フォーム -->
+<form method="get" action="{% url 'ope_search_results' %}" class="d-flex mb-4">
+    <input type="text" name="query" size="50" class="form-control me-2" placeholder="イベントを検索" value="{{ query }}">
+    <button type="submit" class="btn btn-primary">検索</button>
+</form>
+
+<!-- イベント投稿ボタン -->
+<a href="{% url 'ope_post' %}" class="btn btn-primary">イベントを投稿する</a>
+
+<br><br>
+
+<!-- 検索結果表示 -->
+{% if query %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-3">検索結果</h2>
+        {% if events %}
+            <ul class="list-group">
+                {% for event in events %}
+                    <div class="event-item" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                        <h2>{{ event.event_name }}</h2>
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.event_name }}" style="width: 200px; height: auto;">
+                        {% endif %}
+                        <p>日付: {{ event.live_time }}</p>
+                        <p>開場時間: {{ event.open_time }}</p>
+                        <p>開演時間: {{ event.event_time }}</p>
+                        <p>場所: {{ event.place }}</p>
+                        <p>料金: ¥{{ event.price }}</p>
+                        <p>枚数: {{ event.number }}</p>
+                        <p>申し込み制限: {{ event.limit }}</p>
+                        <p>支払い方法: {{ event.payment }}</p>
+                        <p>期間: {{ event.period }}日</p>
+                        <p>注意事項: {{ event.attention }}</p>
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="Event Image" width="300">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-center">「{{ query }}」に一致するイベントはありません。</p>
+        {% endif %}
+    </div>
+{% endif %}
+
+<!-- イベント一覧 -->
+<div style="border: solid 3px #000;">
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2>{{ post.event_name }}</h2>
+                <p>日付: {{ post.live_time }}</p>
+                <p>開場時間: {{ post.open_time }}</p>
+                <p>開演時間: {{ post.event_time }}</p>
+                <p>場所: {{ post.place }}</p>
+                <p>料金: ¥{{ post.price }}</p>
+                <p>枚数: {{ post.number }}</p>
+                <p>申し込み制限: {{ post.limit }}</p>
+                <p>支払い方法: {{ post.payment }}</p>
+                <p>期間: {{ post.period }}日</p>
+                <p>注意事項: {{ post.attention }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Event Image" width="300">
+                {% endif %}
+
+                <a href="{% url 'edit_post' post.id %}">編集</a>
+
+                <form method="post" action="{% url 'delete_post' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+                </form>
+
+                <form action="{% url 'ticket_copy' post.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">再販する!!!!!!</button>
+                </form>
+            </li>
+        {% empty %}
+            <p>現在、イベントはありません。</p>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    align-items: center;
+}
+
+/* 見出し */
+.content h1 {
+    font-size: 45px; /* 見出しのサイズ */
+    margin-bottom: 10px; /* 下余白 */
+    color: #4E95D9; /* 青色 */
+}
+
+/* 説明文 */
+.content p {
+    font-size: 16px; /* テキストサイズ */
+    margin-bottom: 30px; /* 下余白 */
+    color: #a7a4a4; /* 少し薄い白色 */
+}
+
+/* ボタンのコンテナ */
+.TOP-container {
+    margin-top: 20px; /* 上余白 */
+}
+
+.TOP-container a button {
+    color: #fff; /* ボタンの文字色 */
+    background-color: #4E95D9; /* 背景色 */
+}
+
+
+/* ボタン */
+.TOP-container button {
+    background-color: #4E95D9; /* 青色 */
+    color: white; /* 文字色を白に設定 */
+    font-size: 16px; /* フォントサイズ */
+    padding: 10px 20px; /* 内側余白 */
+    border: none; /* 枠線なし */
+    border-radius: 5px; /* 角丸ボタン */
+    cursor: pointer; /* ポインタカーソル */
+    transition: background-color 0.3s ease; /* ホバーアニメーション */
+}
+
+/* ボタンのホバー時 */
+.TOP-container button:hover {
+    background-color: #3b7cbf; /* 少し濃い青 */
+}
+
+/* リンクの装飾を削除 */
+.TOP-container a {
+    text-decoration: none; /* 下線を削除 */
+}
+
+/* レスポンシブ対応（小さい画面向け） */
+@media (max-width: 600px) {
+    .content h1 {
+        font-size: 24px; /* 見出しのサイズを調整 */
+    }
+
+    .content p {
+        font-size: 14px; /* 説明文のサイズを調整 */
+    }
+
+    .TOP-container button {
+        font-size: 14px; /* ボタン文字サイズを調整 */
+        padding: 8px 16px; /* ボタン内側余白を調整 */
+    }
+}

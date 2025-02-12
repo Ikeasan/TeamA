@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %} <!-- static タグを使用するために追加 -->
+
+{% block title %}ユーザー投稿{% endblock %}
+
+{% block head %}
+
+<title>投稿フォーム</title>
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/userpost.css' %}">
+
+<body>
+    <h2>ユーザー投稿フォーム</h2>
+    <!-- 投稿フォーム -->
+    <form action="{% url 'userpost' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}  <!-- CSRF トークン（Django用） -->
+        
+        <!-- テキスト入力 -->
+        <div>
+            <label for="comment">コメント:</label><br>
+            <textarea id="comment" name="comment" rows="4" cols="50" placeholder="コメントを入力してください"></textarea>
+        </div>
+        <br>
+        
+        <!-- 画像アップロード -->
+        <div>
+            <label for="image">画像アップロード:</label><br>
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        <br>
+        
+        <!-- 投稿ボタン -->
+        <div>
+            <button type="submit">投稿する</button>
+        </div>
+    </form>
+
+    <h3>過去の投稿</h3>
+    <div>
+        {% for post in posts %}
+            <div style="border: 1px solid #ddd; padding: 10px; margin: 10px 0;">
+                <p><strong>コメント:</strong> {{ post.comment }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="投稿画像" style="max-width: 200px; margin-top: 10px;">
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>まだ投稿はありません。</p>
+        {% endfor %}
+    </div>
+    
+    
+</body>
+</html>
+    
+
+{% endblock %}

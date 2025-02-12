@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}申し込み履歴{% endblock %}
+
+{% block content %}
+<h1>申し込み履歴</h1>
+
+<div class="ticket-history-container">
+    {% if ticket_histories %}
+        {% for ticket in ticket_histories %}
+            <div class="ticket-item" style="border: solid 3px #000; margin-bottom: 10px; padding: 10px;">
+                <h2>{{ ticket.event.event_name }}</h2>
+                <p><strong>ステータス:</strong> 
+                    {% if ticket.status == "pending" %}
+                        結果待ち
+                    {% elif ticket.status == "won" %}
+                        当選
+                    {% elif ticket.status == "lost" %}
+                        落選
+                    {% endif %}
+                </p>
+                <p><strong>当選発表日:</strong> {{ ticket.result_date|date:"Y年m月d日 H:i" }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>申し込み履歴はありません。</p>
+    {% endif %}
+</div>
+{% endblock %}

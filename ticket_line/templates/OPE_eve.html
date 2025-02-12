@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title%}＜運営者＞イベント{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/OPE_eve.css' %}">
+    <h1>イベント編集</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- フォームのフィールドを表示 -->
+        <button type="submit">保存</button>
+    </form>
+
+    <a href="{% url 'ope_top' %}">イベントTOPに戻る</a>
+
+{%endblock%}

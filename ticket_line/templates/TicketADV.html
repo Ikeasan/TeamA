@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}購入済みチケット一覧{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/TicketADV.css' %}">
+    <h1>購入済みチケット一覧</h1>
+
+    {% if tickets %}
+        {% for ticket in tickets %}
+            <div class="ticket">
+                <h2>{{ ticket.post.event_name }}</h2>
+                <img src="{{ ticket.post.image.url }}" alt="イベント画像" class="event-image" width="300">
+                <p>イベント時間: {{ ticket.post.event_time }}</p>
+                <a href="{% url 'ticket_detail' ticket.id %}">チケット詳細を見る</a>
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>まだ購入したチケットがありません。</p>
+    {% endif %}
+
+{% endblock %}

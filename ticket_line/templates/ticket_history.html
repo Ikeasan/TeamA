@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}申し込み履歴{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/ticket_history.css' %}">
+<h1>申し込み履歴</h1>
+<!-- ラジオボタンでタブを切り替え -->
+<form>
+    <label>
+        <input type="radio" name="status_filter" value="upcoming" id="upcoming" checked> 開催前
+    </label>
+    <label>
+        <input type="radio" name="status_filter" value="ended" id="ended"> 終了
+    </label>
+</form>
+
+<!-- 開催前タブ -->
+<div id="upcoming-tab" class="tab-content">
+    {% if upcoming_tickets %}
+    <h2>開催前のイベント</h2>
+    <ul>
+        {% for ticket in upcoming_tickets %}
+        <div class="event-item" style="border: 1px solid #ccc; padding: 20px; margin-bottom: 20px;">
+            <!-- イベント名（再販チケットの場合は「（再販）」を表示） -->
+            <li><strong>{% if ticket.is_resale %}【再販】{% endif %}{{ ticket.event.event_name }}</strong></li>
+
+            <!-- イベント画像 -->
+            <img src="{{ ticket.event.image.url }}" alt="{{ ticket.event.event_name }}" style="width: 200px; height: auto;">
+
+            <!-- 当選結果表示 -->
+            <li>当選結果：
+                {% if ticket.status == 'pending' %}
+                    <strong>結果待ち</strong>
+                {% elif ticket.status == 'won' %}
+                    <strong>当選</strong>
+                    <!-- 再販チケットの場合は別のリンクを表示 -->
+                    {% if ticket.is_resale %}
+                        <button onclick="location.href='{% url 're_ticket_wg' ticket.event.id %}'">再販チケットの当選ページに移動</button>
+                    {% else %}
+                        <button onclick="location.href='{% url 'ticket_wg' ticket.event.id %}'">当選ページに移動</button>
+                    {% endif %}
+                {% elif ticket.status == 'lost' %}
+                    <strong>落選</strong>
+                {% else %}
+                    <strong>キャンセル</strong>
+                {% endif %}
+            </li>
+
+            <!-- 当選発表日表示 -->
+                <li>当選発表日：{{ ticket.event.winning }}</li>
+
+                <!-- 当落確認ボタン -->
+                {% if ticket.status == 'pending' and ticket.event.winning.date <= today %}
+                    <button class="check-result-btn" data-event-id="{{ ticket.event.id }}">当落確認</button>
+                {% endif %}
+        </div>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>開催前のイベントはありません。</p>
+    {% endif %}
+</div>
+
+<!-- 終了タブ -->
+<div id="ended-tab" class="tab-content" style="display:none;">
+    {% if past_tickets %}
+    <h2>終了したイベント</h2>
+    <ul>
+        {% for ticket in past_tickets %}
+        <div class="event-item" style="border: 1px solid #ccc; padding: 20px; margin-bottom: 20px;">
+            <!-- イベント名（再販チケットの場合は「（再販）」を表示） -->
+            <li><strong>{% if ticket.is_resale %}【再販】{% endif %}{{ ticket.event.event_name }}</strong></li>
+
+            <!-- イベント画像 -->
+            <img src="{{ ticket.event.image.url }}" alt="{{ ticket.event.event_name }}" style="width: 200px; height: auto;">
+
+            <!-- 当選結果表示 -->
+            <li>当選結果： 
+                {% if ticket.status == 'pending' %}
+                    <strong>結果待ち</strong> 
+                {% elif ticket.status == 'won' %}
+                    <strong>当選</strong>
+                {% elif ticket.status == 'lost' %}
+                    <strong>落選</strong>
+                {% else %}
+                    <strong>キャンセル</strong>
+                {% endif %}
+            </li>
+
+            <!-- 当選発表日表示 -->
+            <li>当選発表日：{{ ticket.event.winning }}</li>
+        </div>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>終了したイベントはありません。</p>
+    {% endif %}
+</div>
+
+<script>
+    // ラジオボタンでタブを切り替える機能
+    const upcomingTab = document.getElementById('upcoming-tab');
+    const endedTab = document.getElementById('ended-tab');
+
+    const upcomingRadio = document.getElementById('upcoming');
+    const endedRadio = document.getElementById('ended');
+
+    upcomingRadio.addEventListener('change', () => {
+        if (upcomingRadio.checked) {
+            upcomingTab.style.display = 'block';
+            endedTab.style.display = 'none';
+        }
+    });
+
+    endedRadio.addEventListener('change', () => {
+        if (endedRadio.checked) {
+            upcomingTab.style.display = 'none';
+            endedTab.style.display = 'block';
+        }
+    });
+
+    // 初期状態で開催前タブを表示
+    if (upcomingRadio.checked) {
+        upcomingTab.style.display = 'block';
+        endedTab.style.display = 'none';
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        // すべての当落確認ボタンにクリックイベントを追加
+        document.querySelectorAll(".check-result-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                const eventId = this.getAttribute("data-event-id");
+                console.log(`当落確認ボタンが押されました: event_id=${eventId}`);
+
+                fetch(`/check_event_results/${eventId}/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": getCookie("csrftoken")  // CSRF トークンを取得
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("サーバーからのレスポンス:", data);
+                    if (data.success) {
+                        alert("当選処理が完了しました！");
+                        location.reload();  // ページをリロード
+                    } else {
+                        alert("当落確認に失敗しました: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error("エラー:", error);
+                    alert("サーバーエラーが発生しました。");
+                });
+            });
+        });
+
+        // CSRF トークンを取得する関数
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                const cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + "=")) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+{% endblock %}

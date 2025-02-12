@@ -1,0 +1,139 @@
+/* フォーム全体のスタイル */
+form {
+    max-width: 600px; /* フォームの最大幅 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 20px; /* 内側余白 */
+    border: 1px solid #ddd; /* 枠線 */
+    border-radius: 10px; /* 角丸 */
+    background-color: #f9f9f9; /* 背景色 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 軽いシャドウ */
+    font-family: Arial, sans-serif; /* フォント */
+}
+
+/* フォームのヘッダー */
+form h3 {
+    text-align: center; /* 中央揃え */
+    font-size: 20px; /* フォントサイズ */
+    margin-bottom: 10px; /* 下余白 */
+    color: #333; /* 文字色 */
+}
+
+form p {
+    text-align: center; /* 説明文を中央揃え */
+    font-size: 14px; /* 説明文のフォントサイズ */
+    color: #555; /* 文字色 */
+    margin-bottom: 20px; /* 下余白 */
+}
+
+/* リストのスタイル */
+form ul {
+    list-style: none; /* リストマーカーを削除 */
+    padding: 0; /* パディングを削除 */
+}
+
+form li {
+    margin-bottom: 15px; /* 各リストアイテムの間の余白 */
+    font-size: 16px; /* リストアイテムのフォントサイズ */
+    color: #333; /* 文字色 */
+}
+
+/* ラベルのスタイル */
+form label {
+    font-weight: bold; /* 太字 */
+    margin-right: 10px; /* ラベルと入力欄の間の余白 */
+    display: inline-block; /* インラインブロック表示 */
+}
+
+/* 入力フィールドと選択ボックスのスタイル */
+form input[type="date"],
+form select {
+    width: 100%; /* 幅を100%に拡張 */
+    padding: 10px; /* 内側余白 */
+    font-size: 14px; /* フォントサイズ */
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 5px; /* 角丸 */
+    box-sizing: border-box; /* ボックスモデルを調整 */
+}
+
+/* 利用規約同意セクション */
+form input[type="checkbox"] {
+    margin-right: 10px; /* チェックボックスとテキストの間隔 */
+}
+
+
+
+/* 申し込み完了ボタン */
+form button[type="submit"] {
+    display: block; /* ブロック表示で中央揃えを適用 */
+    width: 100%; /* ボタンの幅を100%に設定 */
+    padding: 10px 15px; /* 内側余白 */
+    font-size: 16px; /* フォントサイズ */
+    font-weight: bold; /* 太字 */
+    color: #fff; /* 文字色（白） */
+    background-color: #4E95D9; /* 背景色（青） */
+    border: none; /* 枠線を削除 */
+    border-radius: 5px; /* 角丸 */
+    cursor: pointer; /* カーソルをポインタに */
+    transition: background-color 0.3s; /* ホバー時のアニメーション */
+}
+
+form button[type="submit"]:hover {
+    background-color: #3b7cbf; /* ホバー時の背景色を少し濃く */
+}
+
+/* 申し込み完了ボタンのリンクスタイル（aタグのスタイル） */
+.aaa-container a {
+    text-decoration: none; /* リンクの下線を削除 */
+    display: block; /* リンクをブロック要素にしてボタンサイズを占めさせる */
+}
+
+.aaa-container a button {
+    color: #fff; /* ボタンの文字色を白に設定 */
+    background-color: #4E95D9; /* 背景色を青に設定 */
+    border: none; /* ボタンの枠線を削除 */
+}
+
+.disabled-link {
+    pointer-events: none; /* リンクを無効化 */
+    opacity: 0.5; /* 半透明で無効状態を視覚的に */
+}
+
+#submit-button:disabled {
+    background-color: #ccc; /* 無効状態の背景色 */
+    cursor: not-allowed; /* 無効状態のカーソル */
+    opacity: 0.7; /* 視覚的に区別 */
+}
+
+
+/* 追加のリンクテキスト */
+form p {
+    font-size: 14px; /* 小さめのフォントサイズ */
+    text-align: center; /* 中央揃え */
+    margin-top: 10px; /* 上余白 */
+    color: #555; /* 文字色 */
+}
+
+/* フォーム内テキストの強調 */
+form ul li b {
+    color: #333; /* 強調テキストの色 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    form {
+        padding: 15px; /* モバイルでの内側余白を調整 */
+    }
+
+    form button[type="submit"] {
+        font-size: 14px; /* ボタンの文字サイズを調整 */
+    }
+
+    form label {
+        font-size: 14px; /* ラベルのフォントサイズを調整 */
+    }
+
+    form input[type="date"],
+    form select {
+        font-size: 14px; /* 入力欄のフォントサイズを調整 */
+    }
+}

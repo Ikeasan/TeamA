@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} 問い合わせ {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+{% comment %} CSSを入れるコード {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/connect.css' %} ">
+
+    <h1>お問い合わせ</h1>
+    <!--<a>-->
+    <!--<button>すべて</button>-->
+    <!--<button>未回答</button>-->
+    <!--<button>回答済み</button>-->
+    <!--</a>-->
+    {% comment %} {% url 'connect_submit' %} {% endcomment %}
+    <form  method="post" enctype="multipart/form-data" action="{% url 'connect_view' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">送信</button>
+     </form>
+    <br>
+    <br>
+
+    <br>
+    {% comment %} 利用者お問い合わせ {% endcomment %}
+    {% for connect in connects %}
+    <br><br>
+    <div class="list" style="border: solid 3px #000 ;">
+        <h1>お問い合わせ</h1>
+        <h2>{{ connect.title }}</h2>
+        <p>{{ connect.contents }}</p>
+        {% if connect.image %}
+            <img src="{{ connect.image.url }}" alt="{{ connect.title }} "style="width: 200px; height: auto;">
+            <br><br><br>
+        {% endif %}
+        <p>送信日時: {{ connect.sendtime }}</p>
+    </div><br>
+{% comment %} 返信がある場合、返信内容を表示 {% endcomment %}
+        {% for connectreply in connect.replies.all %}
+        <div class="list" style="border: solid 3px #f00;">
+                <h1>返信</h1>
+                <h2>{{ connectreply.title }}</h2>
+                <p>{{ connectreply.contents }}</p>
+                {% if connectreply.image %}
+                <img src="{{ connectreply.image.url }}" alt="{{ connectreply.title }} "style="width: 200px; height: auto;">
+            {% endif %}
+                <p>返信日時: {{ connectreply.sendtime }}</p>
+        </div>
+        {% empty %}
+            <p>返信はありません。</p>
+        {% endfor %}
+
+    {% empty %}
+        <p>お問い合わせがありません。</p>
+    {% endfor %}
+    <br>
+
+    <br>
+
+
+{% endblock %}

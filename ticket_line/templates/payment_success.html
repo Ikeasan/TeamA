@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}購入完了{% endblock %}
+
+{% block content %}
+<h1>購入が完了しました！</h1>
+<p>イベント名: {{ ticket.post.event_name }}</p> 
+<p>購入枚数: {{ ticket.quantity }}</p>
+<p>総額: ¥{{ total_price }}</p>  {# 修正 #}
+<p>会場: {{ ticket.venue }}</p>
+<a href="{% url 'ticket_adv' %}">購入済みチケット一覧へ</a>
+{% endblock %}

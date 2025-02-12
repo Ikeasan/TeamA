@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} ＜管理者＞問い合わせ {% endblock %}
+
+{% block head%}
+
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/connect.css' %} ">
+    <h1>管理者用問い合わせフォーム</h1>
+    <!--<a>-->
+    <!--<button>すべて</button>-->
+    <!--<button>未回答</button>-->
+    <!--<button>回答済み</button>-->
+    <!--</a>-->
+    {% comment %} お問い合わせの表示 {% endcomment %}
+        {% for connect in connects %}
+            <br><br><div class="list" style="border: solid 3px #000;">
+                <h2>{{ connect.title }}</h2>
+                <p>{{ connect.contents }}</p>
+                <p>送信日時: {{ connect.sendtime }}</p>
+                <br><br><br>
+                {% comment %} 写真がある場合、写真を読みこむ {% endcomment %}
+                {% if connect.image %}
+                    <img src="{{ connect.image.url }}" alt="{{ connect.title }}"style="width: 200px; height: auto;">
+                    <br><br><br>
+                {% endif %}
+                {% comment %} お問い合わせの返信 {% endcomment %}
+                <form action="{% url 'ad_connect_reply' connect.pk %}">
+                    {% csrf_token %}
+                <br><button type="submit">返信</button><br><br>
+                </form>
+            </div><br>
+            <div class="list" style="border: solid 3px #f00;">
+                {% if connect.replies.all %}
+                {% for reply in connect.replies.all%}
+                    <h1>返信<h1>
+                <h2>{{ reply.title }}</h2>
+                <p>{{ reply.contents}}</p>
+                {% if reply.image %}
+                <img src="{{ reply.image.url }}" alt="{{ connectreply.title }} "style="width: 200px; height: auto;">
+            {% endif %}
+                <p>{{reply.sendtime}}</p>
+
+                {% endfor %}
+                {% else %}
+                <p>返信はしていません。</p>
+                {% endif %}
+    {% comment %} お問い合わせの削除 {% endcomment %}
+                <form action="{% url 'ad_connect_del' connect.id %}" method="post">
+                    {% csrf_token %}
+                <br><button type="submit">削除</button><br><br>
+                </form>
+                </div>
+        {% empty %}
+            <p>お問い合わせがありません。</p>
+        {% endfor %}
+
+    <br>
+
+    <br>
+    <br>
+
+    <!-- TOP画面に戻るリンク -->
+    <a href="{% url 'AD_TOP' %}">管理者TOPに戻る</a>
+
+{% endblock %}

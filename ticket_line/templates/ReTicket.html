@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}再販チケット{% endblock %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/Reticket.css' %}">
+<h2>再販チケット一覧</h2>
+
+<ul>
+    {% for ticket in resale_tickets %}
+    <li style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background-color: #f9f9f9;">
+        <!-- 再販チケットラベル -->
+        <strong style="color: red;">【再販チケット】</strong>
+        <h3>{{ ticket.post.event_name }}</h3>
+        
+        {% if ticket.post.image %}
+            <img src="{{ ticket.post.image.url }}" alt="{{ ticket.post.event_name }}" style="width: 150px; height: auto;">
+        {% endif %}
+        
+        <p><strong>イベント日程:</strong> {{ ticket.post.event_time|date:"Y-m-d H:i" }}</p>
+        <p><strong>会場:</strong> {{ ticket.post.place }}</p>
+        <p><strong>価格:</strong> {{ ticket.post.price }}円</p>
+        <p><strong>再販チケット枚数:</strong> {{ ticket.post.resale_tickets }} 枚</p>
+
+        <!-- 赤いバッジ -->
+        <div style="display: inline-block; background-color: red; color: white; padding: 5px 10px; border-radius: 5px;">
+            再販チケット
+        </div>
+
+        <form method="post" action="{% url 'ticket_app:submit_resale_ticket' %}">
+            {% csrf_token %}
+            <input type="hidden" name="re_ticket_id" value="{{ ticket.id }}">
+            
+            <label for="result_date"><strong>当選発表日:</strong></label>
+            <input type="date" name="result_date" required>
+
+            <button type="submit" style="background-color: #ff5733; color: white; padding: 5px 10px; border: none; cursor: pointer;">
+                申し込み
+            </button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

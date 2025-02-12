@@ -1,0 +1,83 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* 明るい背景色 */
+    color: #333; /* ベーシックな文字色 */
+}
+
+/* コンテナスタイル */
+.container {
+    max-width: 600px;
+    margin: 50px auto; /* ページ中央に配置 */
+    background: #ffffff; /* 白背景 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 軽い影 */
+    padding: 20px; /* 内側余白 */
+}
+
+/* 見出しのスタイル */
+.container h2 {
+    font-size: 24px; /* 見出しの文字サイズ */
+    color: #333; /* 落ち着いた文字色 */
+    margin-bottom: 20px; /* 下余白 */
+    text-align: center; /* 中央揃え */
+    font-weight: bold;
+}
+
+/* フォーム要素のスタイル */
+form {
+    display: flex;
+    flex-direction: column; /* 縦並びに配置 */
+    gap: 15px; /* 各要素間の余白 */
+}
+
+form label {
+    font-size: 16px;
+    color: #555; /* 優しい文字色 */
+    margin-bottom: 5px; /* ラベルと入力フィールドの間隔 */
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 5px; /* 角を丸く */
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1); /* 内側の軽い影 */
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #007bff; /* フォーカス時の色 */
+    outline: none;
+}
+
+/* ボタンのスタイル */
+form .btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* 青系ボタン */
+    color: #ffffff; /* 白文字 */
+    border: none; /* ボーダーなし */
+    border-radius: 5px; /* 角を丸く */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form .btn-primary:hover {
+    background-color: #0056b3; /* ホバー時の濃い青 */
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    form .btn-primary {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

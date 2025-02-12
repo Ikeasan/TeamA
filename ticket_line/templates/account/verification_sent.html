@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}確認リンク送信{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/verification_sent.css' %}">
+<div class="container mt-5 text-center">
+    <h1>確認メールを送信しました</h1>
+    <p>メールを確認してください。</p>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}会場リスト{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/venue_list.css' %}">
+
+<h1>会場一覧</h1>
+
+<b style="color: red;"><font size="5">管理者専用</font></b>
+
+<br><br>
+
+<!-- 会場登録ボタン -->
+<a href="{% url 'venue_create' %}" class="btn btn-primary">会場を登録する</a>
+
+<div style="border: solid 3px #000; padding: 20px;">
+    <ul>
+        {% for venue in venues %}
+            <li>
+                <p>{{ created_at }}</p>
+                <h1>{{ venue.name }}</h1>
+                <p>住所: {{ venue.address }}</p>
+                <p>電話番号: {{ venue.phone_number }}</p>
+                <p>収容人数: {{ venue.capacity }}</p>
+        
+                <!-- Googleマップの埋め込み表示 -->
+                {% if venue.generate_iframe %}
+                    <iframe src="{{ venue.generate_iframe }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                {% else %}
+                    <p>Googleマップの埋め込みURLが正しく設定されていません。</p>
+                {% endif %}
+                <!-- フロアマップの画像 -->
+                {% if venue.floor_map %}
+                <div class="floor-map-container">
+                    <img src="{{ venue.floor_map.url }}" alt="Floor Map" class="floor-map-image" width="1000"> <!--widthが画像の大きさ-->
+
+                </div>
+                {% endif %}
+           <!--- <p>フロアマップ： {{ venue.floor_map }}</p>-->
+                <p>追加情報: {{ venue.additional_info }}</p>
+
+                <h2>座席の画像</h2>
+                <div class="image-gallery">
+                    {% if venue.images.all %}
+                        {% for image in venue.images.all %}
+                            {% if image.image %}
+                                <div class="image-item" style="margin: 10px; display: inline-block; text-align: center;">
+                                    <img src="{{ image.image.url }}" alt="画像" width="300">
+                                    <p>{{ image.name }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <p>画像がまだ登録されていません。</p>
+                    {% endif %}
+                </div>
+
+                <!-- 編集ボタン -->
+                <a href="{% url 'edit_venue' venue.id %}">編集</a>
+
+                <!-- 会場削除フォーム -->
+                <form method="post" action="{% url 'delete_venue' venue.id %}">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+                </form>
+            </li>
+            <br>
+            <br>
+            <br>
+        {% empty %}
+            <p>現在、登録された会場はありません。</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

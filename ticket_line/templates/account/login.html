@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}ログイン{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% comment %} <div class="row justify-content-center">
+    <div class="col-md-6">
+        <!-- メッセージの表示 -->
+        {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+            <div  class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="閉じる"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %} {% endcomment %}
+
+
+        <h2 class="text-center">ログイン</h2>
+        {% if form.non_field_errors %}
+            <form style="border: solid 3px #f00;">
+            <ul style="list-style: none;" class="errorlist">
+            {% for error in form.non_field_errors %}
+            <li>{{error}}</li>
+            {% endfor %}
+            </ul>
+            </form>
+        {% endif %}
+        <br>
+
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_login">ログイン:</label>
+                <input
+                    type="text"
+                    name="login"
+                    class="form-control"
+                    id="id_login"
+                    placeholder="ユーザー名またはメールアドレス"
+                />
+                {% if form.login.errors %}
+                    <ul  style="list-style: none;"class="errorlist">
+                        {% for error in form.login.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="form-group ">
+                <label for="id_password">パスワード:</label>
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="id_password"
+                    placeholder="パスワード"
+                />
+                {% if form.password.errors %}
+                    <ul style="list-style: none;" class="errorlist">
+                        {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="form-check mt-3">
+                <input
+                    type="checkbox"
+                    name="remember"
+                    class="form-check-input"
+                    id="id_remember"
+                />
+                <label class="form-check-label" for="id_remember">ログインしたままにする</label>
+            </div>
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary">ログイン</button>
+            </div>
+        </form>
+        <br>
+        <div class="text-center mt-3">
+            <a href="{% url 'account_reset_password' %}" class="text-decoration-none">パスワードをお忘れですか？</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

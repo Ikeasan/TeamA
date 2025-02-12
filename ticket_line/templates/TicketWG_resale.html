@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}【再販】当落確認{% endblock %}
+
+{% block content %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/TicketWG.css' %}">
+{% endblock %}
+
+
+    <div class="result">
+        <h1>当選</h1>
+        <p>チケットのご用意ができました。</p>
+
+        <table class="event-details">
+            <tr>
+                <th>公演名</th>
+                <td>{{ ticket.post.event_name }}</td>  <!-- ticket.event.name を参照 -->
+            </tr>
+            <tr>
+                <th>会場</th>
+                <td>{{ ticket.post.place }}</td>  <!-- ticket.event.place を参照 -->
+            </tr>
+            <tr>
+                <th>枚数</th>
+                <td>{{ ticket.quantity }}</td>
+            </tr>
+        </table>
+
+        <table class="price-details">
+            <tr>
+                <th>チケット料金</th>
+                <td>{{ ticket.price }}</td>  <!-- ticket.price を参照 -->
+            </tr>
+        </table>
+
+        <div class="total">
+
+            <a href=" {% url 're_payment_view' event_id=ticket.post.id ticket_id=ticket.id %} ">支払い手続きはこちら</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}チケットキャンセル{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cancelTicket.css' %} ">
+<div class="cancel-ticket-container container mt-5">
+    <h1 class="text-center">
+        <div style="border: solid 3px #000; display: inline-block; padding: 10px;">キャンセルチケット</div>
+    </h1>
+    <br>
+
+    <!-- チケット情報 -->
+    <form id="cancelForm" method="POST" action="{% url 'cancel_ticket' ticket.id %}">
+        {% csrf_token %}
+
+        <table class="table table-bordered text-center">
+            <tr>
+                <th>氏名</th>
+                <td>
+                    <input type="text" name="name" class="form-control" placeholder="氏名を入力してください" required>
+                </td>
+            </tr>
+            <tr>
+                <th>チケット詳細</th>
+                <td>
+                    <!-- チケット情報を表示 -->
+                    <span>{{ ticket.event.name }} - {{ ticket.event.event_date }} - {{ ticket.seat_row }}列 {{ ticket.seat_number }}番</span>
+                </td>
+            </tr>
+            <tr>
+                <th>チケット枚数</th>
+                <td>
+                    <input type="number" name="ticket_count" class="form-control" placeholder="チケット枚数を入力してください" min="1" required>
+                </td>
+            </tr>
+            <tr>
+                <th>キャンセル理由</th>
+                <td>
+                    <textarea name="cancel_reason" class="form-control" rows="4" placeholder="キャンセル理由を入力してください" required></textarea>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 同意/キャンセル選択 -->
+        <div class="form-check d-flex justify-content-center align-items-center my-4">
+            <input type="checkbox" class="form-check-input me-2" id="agreeCheckbox">
+            <label for="agreeCheckbox" class="form-check-label">
+                <strong>同意する</strong>
+            </label>
+        </div>
+
+        <div class="text-center">
+            <a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-secondary btn-lg m-2">戻る</a>
+            <button type="submit" id="cancelButton" class="btn btn-danger btn-lg m-2" disabled>キャンセルする</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // 同意するチェックボックスの状態に応じてキャンセルボタンを有効/無効にする
+    const agreeCheckbox = document.getElementById('agreeCheckbox');
+    const cancelButton = document.getElementById('cancelButton');
+
+    agreeCheckbox.addEventListener('change', function () {
+        cancelButton.disabled = !this.checked;
+    });
+</script>
+
+{% endblock %}

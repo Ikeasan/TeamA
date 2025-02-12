@@ -1,0 +1,51 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* 明るい背景 */
+    color: #333; /* ベーシックな文字色 */
+}
+
+/* コンテナのスタイル */
+.container {
+    max-width: 600px;
+    margin: 50px auto; /* ページ中央に配置 */
+    background: #ffffff; /* 白背景 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 軽い影 */
+    padding: 20px; /* 内側余白 */
+    text-align: center; /* テキストを中央揃え */
+}
+
+/* 見出しのスタイル */
+.container h1 {
+    font-size: 24px; /* 見やすい文字サイズ */
+    color: #28a745; /* 成功通知の緑色 */
+    margin-bottom: 15px; /* 下余白 */
+    font-weight: bold; /* 強調 */
+}
+
+/* メッセージのスタイル */
+.container p {
+    font-size: 16px;
+    color: #555; /* 優しい文字色 */
+    line-height: 1.6; /* 読みやすい行間 */
+}
+
+/* ボタンやリンクのスタイル (必要なら追加) */
+.container a {
+    display: inline-block;
+    margin-top: 20px; /* 上部余白 */
+    padding: 10px 20px; /* 内側余白 */
+    font-size: 16px;
+    color: #ffffff; /* 白文字 */
+    background-color: #007bff; /* 青系ボタン */
+    border-radius: 5px; /* 角を丸く */
+    text-decoration: none; /* 下線を消す */
+    transition: background-color 0.3s ease; /* ホバー時の効果 */
+}
+
+.container a:hover {
+    background-color: #0056b3; /* 濃い青に変化 */
+}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}ブックマーク{% endblock %}
+
+{% block content %}
+
+<h1>ブックマーク一覧</h1>
+
+{% comment %} CSSを入れるコード {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/bookmark.css' %} "> 
+
+<div class="bookmark-container">
+    {% if bookmarks %}
+        {% for bookmark in bookmarks %}
+            <div class="bookmark-item">
+                <!-- イベント画像（クリック可能） -->
+                <a href="{% url 'event_detail' event_id=bookmark.event.id %}">
+                    {% if bookmark.event.image %}
+                        <img src="{{ bookmark.event.image.url }}" alt="{{ bookmark.event.event_name }}" width="150" height="100">
+                    {% else %}
+                        <img src="{% static 'image/default_event.jpg' %}" alt="デフォルトのイベント画像" width="150" height="100">
+                    {% endif %}
+                </a>
+                
+                <!-- イベント情報 -->
+                <p><strong>イベント名:</strong> {{ bookmark.event.event_name }}</p>
+                <p><strong>開催日:</strong> {{ bookmark.event.event_time }}</p>
+                <p><strong>場所:</strong> {{ bookmark.event.place }}</p>
+
+                <!-- ブックマーク解除ボタン -->
+                <a href="{% url 'bookmark_toggle' post_id=bookmark.event.id %}" class="btn btn-danger">ブックマーク解除</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>ブックマークがありません。</p>
+    {% endif %}
+</div>
+
+{% endblock %}

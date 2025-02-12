@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-3">検索結果（運営者用）</h2>
+
+    
+    {% if events %}
+    <ul class="list-group">
+        {% for event in events %}
+            <div class="event-item" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                <h2>{{ event.event_name }}</h2>
+        
+                <p>日付: {{ event.live_time }}</p>
+                <p>開場時間: {{ event.open_time }}</p>
+                <p>開演時間: {{ event.event_time }}</p>
+                <p>場所: {{ event.place }}</p>
+                <p>料金: ¥{{ event.price }}</p>
+                <p>枚数: {{ event.number }}</p>
+                <p>申し込み制限: {{ event.limit }}</p>
+                <p>支払い方法: {{ event.payment }}</p>
+                <p>期間: {{ event.period }}日</p>
+                <p>注意事項: {{ event.attention }}</p>
+                {% if event.image %}
+                    <img src="{{ event.image.url }}" alt="{{ event.event_name }}" style="width: 300px; height: auto;">
+                {% endif %}
+                <a href="{% url 'edit_post' event.id %}" class="btn btn-primary">編集</a>
+                <br>
+                <a href="{% url 'ope_top' %}" class="btn btn-primary">TOPへ戻る</a>
+            </div>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-center">「{{ query }}」に一致するイベントはありません。</p>
+    <br>
+    <a href="{% url 'ope_top' %}" class="btn btn-primary">TOPへ戻る</a>
+{% endif %}
+{% endblock %}

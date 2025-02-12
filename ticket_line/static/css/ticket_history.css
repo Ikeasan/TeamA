@@ -1,0 +1,43 @@
+/* タブのラベルのスタイル */
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/* ラジオボタンを非表示に */
+.tab-input {
+    display: none;
+}
+
+.tab-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+.tab-label:hover {
+    background-color: #ddd;
+}
+
+/* ラジオボタンがチェックされているとき */
+.tab-input:checked + .tab-label {
+    background-color: #4E95D9;
+    color: white;
+}
+
+/* タブコンテンツ */
+.tab-content {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+/* チェックされたラジオボタンに関連するタブコンテンツを表示 */
+.tab-input:checked + .tab-label + .tab-content {
+    display: block;
+}

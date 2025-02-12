@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}会場登録完了{% endblock %}
+
+{% block content %}
+<h1>登録完了</h1>
+<p>会場の登録が完了しました。</p>
+<br>
+<br>
+
+<!-- 会場リストに戻るリンク -->
+<a href="{% url 'venue_list' %}" class="btn btn-secondary" style="margin-top: 20px;">会場リストに戻る</a>
+{% endblock %}

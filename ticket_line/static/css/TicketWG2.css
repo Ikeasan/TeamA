@@ -1,0 +1,64 @@
+/* カード全体のスタイル */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(249, 247, 247, 0.925);
+    padding: 20px;
+}
+
+/* 落選メッセージ */
+h1.text-danger {
+    color: #e74c3c;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* カードヘッダー */
+.card-header {
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* カード本文 */
+.card-body {
+    font-size: 16px;
+}
+
+/* 強調表示 */
+.card-body strong {
+    color: #333;
+}
+
+/* イベント詳細のスタイル */
+.card-body p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.card-body p strong {
+    color: #555;
+}
+
+/* レスポンシブ対応（モバイル端末向け） */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px;
+    }
+
+    .card-header {
+        font-size: 16px;
+    }
+
+    .card-body {
+        font-size: 14px;
+    }
+
+    .card-body p {
+        font-size: 16px;
+    }
+}

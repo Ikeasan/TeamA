@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title%}＜運営者＞イベント{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/OPE_eve.css' %}">
+
+    <h1>会場編集</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- 会場情報 -->
+        <p>名前：{{ form.name }}</p>
+        <p>住所：{{ form.address }}</p>
+        <p>電話番号：{{ form.phone_number }}</p>
+        <p>GoogleマップURL：{{ form.google_map_url }}</p>
+        <p>収容人数：{{ form.capacity }}</p>
+        <p>追加情報：{{ form.additional_info }}</p>
+        <br>
+        <h3>現在のフロアマップ</h3>
+        {% if venue.floor_map %}
+            <img src="{{ venue.floor_map.url }}" alt="フロアマップ" width="300">
+        {% else %}
+            <p>フロアマップが設定されていません。</p>
+        {% endif %}
+    
+        <h3>新しいフロアマップを選択:</h3>
+        <input type="file" name="floor_map">  <!-- フロアマップの画像を選択 -->
+        <br><br><br>
+        <div style="border: solid 1px #000;"></div>
+        <br>
+        <!-- 座席画像フォームセット -->
+        <h3>座席画像の編集</h3>
+        {{ formset.management_form }}  <!-- 重要！これがないとフォームセットが動かない -->
+    
+        {% for form in formset %}
+        <div class="venue-image-container">
+            {{ form.id }}  <!-- 既存の画像を識別するために ID を保持 -->
+            {% if form.instance.image %}
+                <p>現在の画像名：{{ form.instance.name }}</p>
+                <img src="{{ form.instance.image.url }}" alt="座席画像" width="300">
+            {% endif %}
+            <br>
+            <label>新しい画像名を入力:</label>
+            {{ form.name }}
+            <br>
+            <label>新しい座席画像を選択:</label>
+            {{ form.image }}
+            <br>
+            <label>削除:</label> {{ form.DELETE }}
+        </div>
+        <br><br>
+        <div style="border: solid 1px #ddd; width: 400px; margin: 10px auto;"></div>
+        <br>
+    {% empty %}
+        <p>座席画像が設定されていません。</p>
+    {% endfor %}
+
+ 
+
+
+        <button type="submit">保存</button>
+        <br>
+        <a href="{% url 'ope_top' %}">イベントTOPに戻る</a>
+    </form>
+
+{%endblock%}

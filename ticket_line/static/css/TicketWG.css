@@ -1,0 +1,97 @@
+/* 全体のレイアウト */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* フォームのスタイル */
+.event-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ボタン */
+.bookmark button {
+    padding: 10px 20px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bookmark button:hover {
+    background-color: #ff6600;
+}
+
+/* 結果セクション */
+.result h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+.result p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* イベント詳細テーブル */
+.event-details, .price-details {
+    width: 100%;
+    border-collapse: collapse;  /* セルを1行ずつ線で区切る */
+    margin-bottom: 30px;
+}
+
+.event-details th, .price-details th {
+    padding: 12px; /*縦のグレーの長さ*/
+    background-color: #f2f2f2;
+    text-align: left;
+    font-size: 18px;
+    border-bottom: 2px solid #ccc;  /* 行を区切る線 */
+}
+
+.event-details td, .price-details td {
+    padding: 12px; /*横のグレーの長さ*/
+    text-align: left;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;  /* 行を区切る線 */
+}
+
+
+
+/* 合計金額セクション */
+.total h2 {
+    font-size: 28px;
+    color: #ff8c00;
+}
+
+.payment-link {
+    font-size: 20px;
+    color: #0066cc;
+    text-decoration: none;
+    border: 1px solid #0066cc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.payment-link:hover {
+    background-color: #0066cc;
+    color: white;
+}
+
+table{
+    margin: auto;
+    text-align: center;
+    max-width: 250px;
+}
+
+table th{
+    
+    background-color: #66ffff;
+}

@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}イベントページ{% endblock %}
+
+{% block content %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/event.css' %}">
+{% endblock %}
+
+<div class="event-container">
+    <h2>{{ event.event_name }}</h2>
+
+<!-- ブックマークボタン -->
+<div class="bookmark-container">
+    {% if user.is_authenticated %}
+        {% if is_bookmarked %}
+            <!-- すでにブックマークしている場合 -->
+            <a href="{% url 'bookmark_toggle' event.id %}">
+                <button class="btn btn-danger">ブックマーク解除</button>
+            </a>
+        {% else %}
+            <!-- まだブックマークしていない場合 -->
+            <a href="{% url 'bookmark_toggle' event.id %}">
+                <button class="btn btn-primary">ブックマークする</button>
+            </a>
+        {% endif %}
+    {% else %}
+        <!-- ユーザーがログインしていない場合 -->
+        <p>ログインするとブックマーク機能が利用できます。</p>
+    {% endif %}
+</div>
+
+    <br>
+
+    <!-- ラジオボタンでタブ選択 -->
+    <div class="tabs-container">
+        <!-- ラジオボタンとラベルをタブメニューとして使用 -->
+        <input type="radio" name="tab" id="tab1" checked>
+        <label for="tab1" class="tab-label">詳細</label>
+
+        <input type="radio" name="tab" id="tab2">
+        <label for="tab2" class="tab-label">チケット</label>
+
+        <input type="radio" name="tab" id="tab3">
+        <label for="tab3" class="tab-label">会場</label>
+
+        <input type="radio" name="tab" id="tab4">
+        <label for="tab4" class="tab-label">コメント</label>
+
+
+
+        <!-- タブコンテンツ -->
+        <div class="tab-content active" id="detail">
+            <!-- イベント情報 -->
+            <p>
+                <ul>
+
+                        <p>{{ event.event_name }}</p>
+                        {% comment %} {% if event.image %} {% endcomment %}
+                        <img src="/media/{{ event.image }}" alt="Event Image" width="300">
+                        {% comment %} {% endif %} {% endcomment %}
+                        <p>{{ event.comment }}</p>
+
+
+                </ul>
+            </p>
+        </div>
+
+        <div class="tab-content" id="ticket">
+            <ul>
+                <p>イベント名: {{ event.event_name }}</p>
+                        <p>開場時間: {{ event.open_time }}</p>
+                        <p>開演時間: {{ event.event_time }}</p>
+                        <p>場所: {{ event.place }}</p>
+                        <p>料金: ¥{{ event.price }}</p>
+                        <p>申し込み制限: {{ event.limit }}</p>
+                        <p>支払い方法: {{ event.payment }}</p>
+                        <p>販売終了日: {{ event.period }}まで</p>
+                        <p>当落発表日: {{ event.winning }}</p>
+                        <p>お支払い期限日: {{ event.payment_fin }}まで</p>
+            </ul>
+            <br>
+
+            <!-- 申し込みボタンと当落確認 -->
+            <div class="bookmark-container2">
+                <a href="{% url 'getTicket2' event.id %}">
+                    <button type="submit">申し込みはこちら</button>
+                </a>
+            </div>
+
+            <br><br>
+            <!--<button class="check-result-btn" data-event-id="{{ ticket.event.id }}">当落確認</button>-->
+            <br><br>
+
+            <!-- 再販ボタン -->
+            <div class="bookmark-container2">
+                <a href="{% url 'get_re_ticket'  event.id %}">
+                    <button type="submit">再販はこちら</button>
+                </a>
+                <br><br>
+            </div>
+        </div>
+
+        <div class="tab-content" id="stage">
+            <div class="venue-info">
+                <h2>会場情報</h2>
+                <h2>{{ event.event_name }}</h2>
+                <p>日付: {{ event.event_time }}</p>
+                <p>場所: {{ event.place}}</p>
+                <p>住所: {{ venue.address }}</p>
+                <p>電話番号: {{ venue.phone_number }}</p>
+                <p>収容人数: {{ venue.capacity }}</p>
+                <p>追加情報: {{ venue.additional_info }}</p>
+
+
+                <!-- Googleマップ埋め込み -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.4224994089595!2d135.47356777439634!3d34.669284784900114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7b24b87684b%3A0x535f75f9161484f1!2z5Lqs44K744Op44OJ44O844Og5aSn6Ziq!5e0!3m2!1sja!2sjp!4v1739320275505!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12961.124312900296!2d139.76169359680114!3d35.69470018521363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d672507f009%3A0x4f31cbaa8aca2244!2z5p2x5Lqs5oOF5aCx44Kv44Oq44Ko44Kk44K_44O85bel5a2m6Zmi5bCC6ZaA5a2m5qCh!5e0!3m2!1sja!2sjp!4v1736834586863!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+                <!--{% if venue and venue.google_map_url %}-->
+                <!--<iframe src="https://www.google.com/maps/place/..."></iframe>-->
+                <!--{% else %}-->
+                <!--<p>会場情報が未設定です。</p>-->
+                <!--{% endif %}-->
+
+                <!-- フロアマップ-->
+                {% if venue.floor_map %}
+                    <div class="floor-map">
+                        <h3>フロアマップ</h3>
+                        <!-- フロアマップ画像 -->
+                        <div class="floor-map-container">
+                            <img src="{{ venue.floor_map.url }}" alt="フロアマップ" width="600">
+                        </div>
+
+                        <!-- 座席画像切り替えボタン -->
+                        <div class="floor-map-buttons" style="margin-top: 10px;">
+                        {% if venue.images.all %}
+                            {% for image in venue.images.all %}
+                                {% if image.image %}
+                                    <button type="button" onclick="showSeatView('seat{{ forloop.counter }}')">
+                                        {{ image.name|default:"座席" }}の画像
+                                    </button>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p>座席画像がまだ登録されていません。</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <p>フロアマップは現在登録されていません。</p>
+                {% endif %}
+
+
+                <!-- 吹き出しの画像 （最初は非表示）-->
+                {% for image in venue.images.all %}
+                {% if image.image %}
+                    <div id="seat{{ forloop.counter }}-view" class="image-popup" style="display: none;">
+                        <img src="{{ image.image.url }}" alt="座席{{ forloop.counter }}からの見え方" class="popup-image">
+                        <span class="popup-close" onclick="closePopup('seat{{ forloop.counter }}')">×</span>
+                    </div>
+                {% endif %}
+                {% endfor %}
+
+                <script>
+                     // 座席の画像を表示する関数
+                    function showSeatView(seatId) {
+                        var allPopups = document.querySelectorAll('.image-popup');
+                        // すべてのポップアップを非表示にする
+                        allPopups.forEach(function(popup) {
+                            popup.style.display = 'none';
+                        });
+
+                        // 対応するポップアップを表示
+                        var popup = document.getElementById(seatId + '-view');
+                        popup.style.display = 'block';
+                    }
+
+                    // 吹き出しを閉じる関数
+                    function closePopup(seatId) {
+                        var popup = document.getElementById(seatId + '-view');
+                        popup.style.display = 'none'; // ポップアップを閉じる
+                    }
+                </script>
+
+
+
+            </div>
+            <br>
+        </div>
+
+        <div class="tab-content" id="comment">
+                <h2>コメントを投稿</h2>
+                <form method="post" enctype="multipart/form-data">  <!-- 画像アップロードに必要 -->
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">投稿する</button>
+                </form>
+
+                <hr>
+
+                <!-- コメント一覧 -->
+                <h2>コメント一覧</h2>
+
+                <!-- コメントタブのラジオボタンとラベル -->
+                <input type="radio" name="comment-tab" id="tab5" checked>
+                <label for="tab5" class="Ctab-label">イベント</label>
+
+                <input type="radio" name="comment-tab" id="tab6">
+                <label for="tab6" class="Ctab-label">座席からの見え方</label>
+
+                <input type="radio" name="comment-tab" id="tab7">
+                <label for="tab7" class="Ctab-label">交通情報</label>
+
+                <!-- コメントタブのコンテンツ -->
+                <div class="tab-content" id="event-comments">
+                    <h3>イベント</h3>
+                    <div>
+                        {% for comment in event_comments %}
+                            <p><strong>{{ comment.user.username }}</strong> ({{ comment.created_at }}):</p>
+                            <p>{{ comment.content }}</p>
+                            {% if comment.image %}
+                                <img src="{{ comment.image.url }}" alt="コメント画像" style="max-width: 300px;">
+                            {% endif %}
+                        {% empty %}
+                            <p>このカテゴリーにはまだコメントがありません。</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="tab-content" id="seat-view-comments">
+                    <h3>座席からの見え方</h3>
+                    <div>
+                        {% for comment in seat_view_comments %}
+                            <p><strong>{{ comment.user.username }}</strong> ({{ comment.created_at }}):</p>
+                            <p>{{ comment.content }}</p>
+                            {% if comment.image %}
+                                <img src="{{ comment.image.url }}" alt="コメント画像" style="max-width: 300px;">
+                            {% endif %}
+                        {% empty %}
+                            <p>このカテゴリーにはまだコメントがありません。</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="tab-content" id="transport-comments">
+                    <h3>交通情報</h3>
+                    <div>
+                        {% for comment in transport_comments %}
+                            <p><strong>{{ comment.user.username }}</strong> ({{ comment.created_at }}):</p>
+                            <p>{{ comment.content }}</p>
+                            {% if comment.image %}
+                                <img src="{{ comment.image.url }}" alt="コメント画像" style="max-width: 300px;">
+                            {% endif %}
+                        {% empty %}
+                            <p>このカテゴリーにはまだコメントがありません。</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

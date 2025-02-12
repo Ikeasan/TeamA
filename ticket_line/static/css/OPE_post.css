@@ -1,0 +1,80 @@
+/* セクションのヘッダー */
+h2 {
+    font-size: 1.8rem;
+    color: #444;
+    margin: 20px 0;
+}
+
+/* イベント画像 */
+img {
+    margin: 20px auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* イベント情報のテキスト */
+/* a {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: left;
+    display: block;
+    margin: 10px auto;
+    width: 80%;
+} */
+
+/* 境界線のスタイル */
+/* div {
+    margin: 20px auto;
+    border-radius: 5px;
+    max-width: 600px;
+} */
+
+/* 更新ボタンのスタイル */
+button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 注意事項のボックス */
+div pre {
+    font-size: 0.9rem;
+    color: #555;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    a {
+        font-size: 0.9rem;
+        width: 90%;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    img {
+        width: 60%;
+    }
+}

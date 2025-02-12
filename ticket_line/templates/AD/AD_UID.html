@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}＜管理者＞キャンセルチケット抽選 {% endblock %}
+
+{% block content %}
+{% block head %}
+<link rel="stylesheet" href="static/login.css">
+{% endblock %}
+
+    <br>
+
+    <div style="border: solid 3px #000;">イベント名</div>
+    <br>
+    <a>
+        <button>詳細</button>
+    </a>
+    <br>
+    <br>
+
+    <div style="border: solid 3px #000;">ユーザーIDとか<br>
+    スクロールバーはCSSだったので無理でした</div>
+    
+    <br>
+    <br>
+
+
+    <button>抽選</button>
+    <br><br>
+    
+    <!-- TOP画面に戻るリンク -->
+    <a href="{% url 'AD_TOP' %}">管理者TOPに戻る</a>
+
+{% endblock %}

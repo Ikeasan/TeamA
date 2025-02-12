@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}検索結果{% endblock %}
+
+{% block content %}
+<!--<div class="container mt-5">
+    <h2>検索結果</h2>
+    <p>検索キーワード: <strong>{{ search_query }}</strong></p>
+
+    {% if events %}
+        <ul>
+            {% for event in events %}
+                <li>{{ event.event_name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>一致するイベントが見つかりませんでした。</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">ホームに戻る</a>
+</div>-->
+<div class="container">
+    <h1 class="my-4">イベント検索</h1>
+    <form method="get" class="mb-4">
+        {{ form.as_p }}
+        <!--<button type="submit" class="btn btn-primary">検索</button>-->
+    </form>
+
+    <h2 class="my-3">検索結果</h2>
+    <ul class="list-group">
+        {% for event in events %}
+            <li class="list-group-item" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                <h2>{{ event.event_name }}</h2>
+                {% if event.image %}
+                    <img src="{{ event.image.url }}" alt="{{ event.event_name }}" style="width: 200px; height: auto;">
+                {% endif %}
+                <p>開催日: {{ event.event_time }}</p>
+                <br>
+                <!--<center>"イベント詳細"</center>-->
+                <!--<p>{{ event.comment }}</p>-->
+                <a href="{% url 'event_detail' event.id %}" class="btn btn-primary">詳細を見る</a>
+            </li>
+        {% empty %}
+            <a class="list-group-item">一致するイベントはありません。</a>
+            <br>
+            <a href="{% url 'home' %}" class="btn btn-primary">TOPへ
+            </a>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+/* ページ全体で使用するカスタムスタイル */
+
+/* メインのコンテナに追加するデザイン */
+.container {
+    background-color: #ffffff; /* 背景色 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* コンテナの影 */
+    padding: 20px; /* 内側の余白 */
+}
+
+/* 見出しスタイルの上書き */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial', sans-serif; /* フォントをシンプルに */
+    color: #333333; /* 少し濃いグレー */
+}
+
+/* リンクスタイルの追加 */
+a {
+    color: #007bff; /* デフォルトのリンクカラー */
+    text-decoration: none; /* 下線を削除 */
+}
+
+a:hover {
+    color: #0056b3; /* ホバー時に濃い青色 */
+    text-decoration: underline; /* 下線を追加 */
+}
+
+/* カスタムメッセージ用ボックス */
+.message-box {
+    background-color: #f8f9fa; /* 明るい背景色 */
+    border: 1px solid #ced4da; /* 薄い境界線 */
+    border-radius: 4px; /* 角を少し丸く */
+    padding: 15px; /* 内側の余白 */
+    margin: 15px 0; /* 上下に余白 */
+    color: #495057; /* メッセージの文字色 */
+    font-size: 1rem; /* 標準フォントサイズ */
+}
+
+/* ボタンのカスタムスタイル */
+.btn-custom {
+    background-color: #007bff; /* ボタン背景色 */
+    color: #ffffff; /* テキスト色 */
+    padding: 10px 20px; /* ボタンの余白 */
+    border: none; /* 枠線なし */
+    border-radius: 5px; /* 角を丸く */
+    cursor: pointer; /* マウスカーソルを変更 */
+    font-size: 1rem; /* フォントサイズ */
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+.btn-custom:hover {
+    background-color: #0056b3; /* ホバー時の色 */
+}
+
+/* フォームのスタイル */
+form input[type="text"], form input[type="password"], form textarea {
+    width: 100%; /* 幅を最大に */
+    padding: 10px; /* 内側の余白 */
+    margin-bottom: 15px; /* 下の余白 */
+    border: 1px solid #ced4da; /* 境界線 */
+    border-radius: 4px; /* 角を少し丸く */
+    font-size: 1rem; /* フォントサイズ */
+}
+
+form input[type="submit"], form button {
+    background-color: #007bff; /* ボタン色 */
+    color: white; /* テキスト色 */
+    border: none; /* 枠線なし */
+    border-radius: 5px; /* 角を丸く */
+    padding: 10px 20px; /* ボタン内の余白 */
+    font-size: 1rem; /* フォントサイズ */
+    cursor: pointer; /* カーソル */
+}
+
+form input[type="submit"]:hover, form button:hover {
+    background-color: #0056b3; /* ホバー時 */
+}

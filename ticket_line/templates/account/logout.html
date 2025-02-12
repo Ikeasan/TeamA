@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block title %}ログアウト{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
+<div class="text-center mt-5">
+    <h2>ログアウト</h2>
+    <p>本当にログアウトしますか？</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">ログアウト</button>
+        <a href="/" class="btn btn-secondary">キャンセル</a>
+    </form>
+</div>
+{% endblock %}

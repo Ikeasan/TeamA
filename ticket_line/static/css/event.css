@@ -1,0 +1,300 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* フォーム全体 */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* イベント入力フィールド */
+input[type="text"] {
+    width: 100%; /* 幅いっぱいに */
+    max-width: 600px; /* PCでは最大600px */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ブックマークボタン右寄せ */
+.bookmark-container {
+    text-align: right;
+    margin-right: 10%;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* タブ全体のスタイル */
+.tabs-container {
+    width: 100%;
+    max-width: 900px; /* PCでは最大900px */
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ラジオボタンを隠す */
+input[type="radio"] {
+    display: none;
+}
+
+/* タブラベルのスタイル */
+.tab-label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab-label:hover {
+    background-color: #e0e0e0;
+}
+
+/* チェックされたタブラベルのスタイル */
+input[type="radio"]:checked + .tab-label {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    border-bottom: none; /* コンテンツとつなげるデザイン */
+}
+
+/* タブコンテンツのスタイル */
+.tab-content {
+    display: none;
+    padding: 20px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    /*border-top: none;*/
+    font-size: 16px;
+    background-color: #fff;
+    width: 100%;
+}
+
+/* チェックされたタブのコンテンツを表示 */
+#tab1:checked ~ #detail,
+#tab2:checked ~ #ticket,
+#tab3:checked ~ #stage,
+#tab4:checked ~ #comment {
+    display: block;
+}
+
+/* タブメニュー */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+/* タブボタン */
+.tab-button {
+    padding: 10px 20px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+}
+
+/* フロアマップ全体のスタイル */
+.floor-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px 0;
+    width: 100%/* 画面幅いっぱいに広げる */
+}
+
+/* フロアマップ画像のコンテナ */
+.floor-map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* 親要素に対して幅を最大に */
+    margin: 20px 0;
+}
+
+/* フロアマップ画像のスタイル */
+.floor-map-image {
+    max-width: 90vw;  /* 画面幅の90%以内（現在より少し大きく） */
+    max-height: 70vh; /* 画面高さの70%以内（現在より大きく） */
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: auto;  /* 中央揃え */
+}
+
+
+/* ポップアップ画像のスタイル */
+.image-popup {
+    position: fixed; /* 画面全体に対して固定 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 完全に中央配置 */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* 初期状態で非表示 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 画像のスタイル */
+.popup-image {
+    max-width: 90vw; /* 画面幅の90%まで */
+    max-height: 90vh; /* 画面高さの90%まで */
+    width: auto; /* 画像の縦横比を維持 */
+    height: auto;
+    object-fit: contain; /* 画像がつぶれないように調整 */
+    border-radius: 10px; /* 角を少し丸める */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); /* 影をつける */
+}
+
+/* 閉じるボタン */
+.popup-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.popup-close:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: black;
+}
+
+/* ボタンのスタイル */
+.floor-map-buttons {
+    margin-top: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+label.Ctab-label{
+        max-width: 80%;
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0;
+        cursor: pointer;
+        font-size: 14px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+
+/* スマホ向けのレスポンシブデザイン */
+@media (max-width: 768px) {
+
+    .container {
+        width: 95%; /* スマホでは少し余白を減らして広げる */
+        padding: 15px;
+    }
+    input[type="text"] {
+        width: 100%;
+        max-width: none; /* スマホでは制限なし */
+    }
+
+    .tabs-container {
+        max-width: none; /* スマホでは幅制限なし */
+    }
+
+    .tab-content {
+        margin-top: 10px;
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .img{
+        max-width:70%;
+    }
+
+    .floor-map-image {
+        max-width: 95vw; /* スマホでは幅をさらに広げる */
+        max-height: 50vh; /* 縦の圧迫を減らす */
+    }
+
+    img{
+        max-width: 70%;
+    }
+
+    iframe{
+        max-width:100%;
+    }
+    label.Ctab-label{
+        max-width: 80%;
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0;
+        cursor: pointer;
+        font-size: 14px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+}
+
+/* コメントタブのコンテンツを非表示にする */
+#tab5:checked ~ #event-comments,
+#tab6:checked ~ #seat-view-comments,
+#tab7:checked ~ #transport-comments {
+    display: block;
+}
+
+/* デフォルトで非表示 */
+#event-comments,
+#seat-view-comments,
+#transport-comments {
+    display: none;
+}

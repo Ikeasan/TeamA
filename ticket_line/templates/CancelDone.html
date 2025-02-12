@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}チケットキャンセル完了{% endblock %}
+
+{% block content %}
+<div style="border: solid 3px #000; padding: 20px; text-align: center;">
+    <h1>キャンセルを受け付けました。</h1>
+    <br>
+    <p>登録されているメールアドレス宛にキャンセル受付メールをお送りしましたので、ご確認ください。</p>
+    <br><br>
+    <a href="{% url 'ticket_adv' %}" class="btn btn-primary">チケット一覧に移動する</a>
+</div>
+{% endblock %}

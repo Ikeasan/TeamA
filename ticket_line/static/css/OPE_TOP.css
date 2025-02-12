@@ -1,0 +1,97 @@
+/* セクション区切りのスタイル */
+/* div {
+    margin: 20px auto;
+    border: solid 3px #000;
+    max-width: 800px;
+    border-radius: 8px;
+    padding: 10px;
+} */
+
+/* イベント名のスタイル */
+/* div {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+div.container-fluid{
+    background-color: #0099ff;
+}
+
+div.collapse {
+    background-color: #0099ff;
+}
+
+div a button {
+    margin: 5px;
+} */
+
+/* 投稿フォームのスタイル */
+form {
+    margin: 20px auto;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* ラジオボタンのスタイル */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+font {
+    font-size: 1.1rem;
+}
+
+/* ボタンを囲むセクションのスタイル */
+a {
+    display: inline-block;
+    /* margin-top: 10px; */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    input[type="text"] {
+        width: 80%;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+
+    div {
+        font-size: 1rem;
+    }
+}

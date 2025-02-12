@@ -1,0 +1,90 @@
+/* 全体の設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* 見出しスタイル */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* フォーム全体のスタイル */
+form {
+    width: 300px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left; /* 左寄せで配置 */
+}
+
+/* 入力フィールドのスタイル */
+input[type="username"],
+input[type="mail"],
+input[type="password"] {
+    width: 100%; /* 親要素の幅に対して100%を指定 */
+    padding: 12px; /* パディングを増やして見た目を改善 */
+    margin-top: 5px; /* ラベルとの余白 */
+    margin-bottom: 15px; /* 下部余白 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* パディングやボーダーを含めた幅を調整 */
+    background-color: #fff; /* 背景色を白に指定 */
+}
+
+/* ボタンのスタイル */
+input[type="submit"] {
+    width: 45%;
+    padding: 10px;
+    margin: 10px 2.5%; /* ボタン間の余白を調整 */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* 確認ボタンのスタイル */
+input[type="submit"][value="確認"] {
+    background-color: #4E95D9;
+    color: white;
+}
+
+input[type="submit"][value="確認"]:hover {
+    background-color: #357ABD;
+}
+
+/* 戻るボタンのスタイル */
+input[type="submit"][value="戻る"] {
+    background-color: #ccc;
+    color: black;
+}
+
+input[type="submit"][value="戻る"]:hover {
+    background-color: #aaa;
+}
+
+/* ラベルとフィールドの配置 */
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block; /* ブロック要素としてラベルを表示 */
+}

@@ -1,0 +1,160 @@
+/* フォームの入力欄 */
+form {
+    margin-top: 20px;
+}
+
+/* イベント検索入力欄 */
+input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #4E95D9;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+/*radioボタンのやつ
+/* ▼タブ(共通装飾＋非選択状態の装飾) */
+.tab {
+    display: inline-block;          /* インラインブロック化 */
+    border-width: 1px 1px 0px 1px;  /* 上側と左右に枠線を引く */
+    border-style: solid;            /* 枠線の種類は「実線」 */
+    border-color: black;            /* 枠線の色は「黒」 */
+    border-radius: 0.75em 0.75em 0px 0px;  /* 左上と右上の角だけを丸くする */
+    padding: 0.75em 1em;            /* 内側の余白量 */
+    font-weight: bold;              /* タブの文字を太字にする */
+    color: black;                   /* タブの文字色：黒色 */
+    background-color: #e0e0e0;      /* タブの(非選択状態の)背景色：灰色 */
+ }
+
+ /* ▼タブにマウスポインタが載った際の装飾 */
+ .tab:hover {
+    color: green;                /* タブの文字色：緑色 */
+    background-color: #ccffcc;   /* タブの背景色：淡い緑色 */
+    cursor: pointer;             /* マウスポインタの形状を「指(指し示す形)」にする */
+ }
+ /* ▼選択状態のタブ(＝チェックが入っているラジオボタンの隣にあるタブの装飾) */
+ input:checked + .tab {
+    color: red;                  /* タブの文字色：赤色 */
+    background-color: #ffffcc;   /* タブの背景色：淡い黄色 */
+ }
+/* ▼タブ機能を制御するラジオボタン(非表示にする) */
+.tabbox input { display: none; }
+
+ /* ▼タブの中身(共通装飾＋非選択状態の装飾) */
+ .tabcontent {
+    display: none;             /* 標準では非表示にする */
+    border: 1px solid black;   /* 枠線を引く：黒色で1ピクセルの実線 */
+    padding: 1em;              /* 内側の余白量 */
+    background-color: #ffffcc; /* 背景色：淡い黄色(※選択中のタブの背景色と合わせます) */
+ }
+
+ /* ▼チェックが入っているラジオボタンに対応するタブの中身を表示する */
+ #tabcheck1:checked ~ #tabcontent1 { display: block; }
+ #tabcheck2:checked ~ #tabcontent2 { display: block; }
+ #tabcheck3:checked ~ #tabcontent3 { display: block; }
+ #tabcheck4:checked ~ #tabcontent4 { display: block; }
+
+ /* ▼チェックが入っているラジオボタンの隣にあるタブの装飾(＝選択状態のタブ) */
+ input:checked + .tab {
+    z-index: 10;         /* ※2A */
+    position: relative;  /* ※3 */
+ }
+ /* ▼タブの中身(共通装飾＋非選択状態の装飾) */
+ .tabcontent {
+    margin-top: -1px;    /* ※1 */
+    z-index: 0;          /* ※2B */
+    position: relative;  /* ※3 */
+ }
+ 
+/*ここまで
+
+/* ボタンのスタイル */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4E95D9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #3584b2;
+}
+
+/* ラジオボタンのスタイル */
+input[type="radio"] {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+/* ラジオボタンのフォントサイズ */
+font {
+    font-size: 1.2rem;
+}
+
+/* 会場情報セクション */
+a {
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4E95D9;
+}
+
+/* Google Maps埋め込みスタイル */
+iframe {
+    margin-top: 20px;
+    border: 0;
+    border-radius: 8px;
+}
+
+/* 画像のスタイル */
+img {
+    margin-top: 20px;
+    max-width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ボタンの周りのスタイル */
+button[type="submit"] {
+    margin-top: 20px;
+    background-color: #2e8b57;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #21704e;
+}
+
+/* スペースの確保 */
+br {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    input[type="text"] {
+        width: 80%;
+    }
+
+    font {
+        font-size: 1rem;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    iframe {
+        width: 100%;
+        height: 250px;
+    }
+}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %} <!-- static タグを使用するために追加 -->
+
+{% block title %}マイページ{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+
+<!-- ユーザー情報 -->
+<div class="card mt-4">
+    <h2>マイページ</h2>
+    <div class="card-header">
+        プロフィール情報
+    </div>
+    <div class="card-body">
+        <p><strong>ユーザー名:</strong> {{ user.username }}</p>
+        <p><strong>メールアドレス:</strong> {{ user.email }}</p>
+    </div>
+</div>
+<br><br>
+<!-- アクション -->
+<div class="mt-4">
+    <a href="{% url 'account_logout' %}" class="btn btn-danger">ログアウト</a>
+    <br>
+    <a href="{% url 'account_change_password' %}" class="btn btn-primary">パスワードを変更</a>
+    <br>
+    <a href="{% url 'ticket_adv' %}" class="btn btn-success">チケット表示</a>
+    <br>
+    <a href="{% url 'bookmark' %}" class="btn btn-info">ブックマーク一覧</a>
+    <br>
+    <a href="{% url 'ticket_history_url' %}" class="btn btn-warning">チケット申込履歴</a>
+    <br>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}当落確認{% endblock %}
+
+{% block content %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/TicketWG.css' %}">
+{% endblock %}
+
+{% comment %} <div class="container">
+    <form action="/form.php" method="post" class="event-form">
+        <div>
+            <label for="event" class="visually-hidden">イベント名</label>
+            <input type="text" size="50" placeholder="イベント" name="event">
+        </div>
+    </form>
+
+    <div class="bookmark">
+        <a type="submit"><button>ブックマークする</button></a>
+    </div> {% endcomment %}
+
+    <div class="result">
+        <h1>当選</h1>
+        <p>チケットのご用意ができました。</p>
+
+        <table class="event-details">
+            <tr>
+                <th>公演名</th>
+                <td>{{ ticket.post.event_name }}</td>  <!-- ticket.event.name を参照 -->
+            </tr>
+            <tr>
+                <th>会場</th>
+                <td>{{ ticket.post.place }}</td>  <!-- ticket.event.place を参照 -->
+            </tr>
+            <tr>
+                <th>枚数</th>
+                <td>{{ ticket.quantity}}</td>
+            </tr>
+            {% comment %}
+             <tr>
+                <th>Lコード?</th>
+                <td>{{ ticket.qr_code }}</td>  <!-- ticket.qr_code を参照 -->
+            </tr> {% endcomment %}
+        </table>
+
+        <table class="price-details">
+            <tr>
+                <th>チケット料金</th>
+                <td>{{ ticket.price }}</td>  <!-- ticket.price を参照 -->
+            </tr>
+            {% comment %}
+            <tr>
+                <th>チケット内容</th>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <th>手数料</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>システム手数料</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>店舗発券手数料</th>
+                <td></td>
+            </tr> {% endcomment %}
+        </table>
+
+        <div class="total">
+            {% comment %} <h2>合計金額</h2> {% endcomment %}
+            <a href=" {% url 'payment_view' event_id=ticket.post.id ticket_id=ticket.id %} ">支払い手続きはこちら</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

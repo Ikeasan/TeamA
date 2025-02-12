@@ -1,0 +1,106 @@
+/* 全体の設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: flex-start; */
+    height: 100vh;
+    text-align: center;
+    /*padding-top: 20px;*/
+}
+
+/* 見出しのスタイル */
+h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* タブの選択部分のスタイル */
+select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+/* 区切り線のスタイル */
+header div {
+    width: 100%; /* 幅を100%に設定 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: solid 3px #000;
+}
+
+
+
+
+button:hover {
+    background-color: #357ABD;
+}
+
+/* 画像周りのスタイル */
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px; */
+}
+
+a.navbar-brand {
+    justify-content: left;
+}
+
+
+/* 左右ボタン */
+a b {
+    font-size: 40px;
+}
+
+/* 画像のスタイル */
+img {
+    width: 30%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ボタンエリア */
+button[type="button"] {
+    background-color: #ccc;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ボタンホバーのスタイル */
+button[type="button"]:hover {
+    background-color: #aaa;
+}
+
+/* タブボタンのスタイル */
+select option {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* メールアドレスから下を区切るスタイル */
+form div {
+    position: relative;
+    padding-bottom: 20px; /* 下に余白を追加 */
+}
+
+/* メールアドレス入力欄の下の横棒 */
+form div:last-child {
+    border-bottom: solid 2px #000; /* メールアドレスフィールドから下を区切る */
+    margin-bottom: 20px; /* 下に余白を追加 */
+}

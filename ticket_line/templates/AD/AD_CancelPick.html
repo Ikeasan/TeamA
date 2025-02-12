@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}＜管理者＞キャンセルチケット受け取り{% endblock%}
+
+{% block head %}
+<link rel="stylesheet" href="static/login.css">
+{% endblock %}
+
+{% block content%}
+
+    </head>
+
+    <div style="border: solid 3px #000;"></div>
+    <br>
+
+    <form action="/form.php" method="post">
+        <div>
+            <label for="event" class="visually-hidden"></label>
+            <input type="text" size="50"  placeholder="チケット検索画面" name="event">
+        </div>
+    </form>
+
+    <br>
+    <br>
+
+
+    <form>
+        <font size="5">
+            <input type="radio" name="menu" value="detail">全て
+            
+            <input type="radio" name="menu" value="ticket">未対応
+        
+            <input type="radio" name="menu" value="stage">対応済み
+    
+        </font>
+    </b>
+</form>
+
+    <br>
+    <br>
+    <a>
+        <table border="1">
+            <tr>
+                <font size="5">
+                <th><font size="5">氏名</font></th>
+                <th><pre>                                                   </pre></th>
+            </tr>
+            
+            <tr>
+                <th><font size="5">イベント名</font></th>
+                <th><pre>                                                   </pre></th>
+            </tr>
+            
+            <tr>
+                <th><font size="5">チケット内容</font></th>
+                <th><pre>                                                   </pre></th>
+            </tr>
+            
+            <tr>
+                <th><font size="5">キャンセル理由</font></th>
+                <th><pre>                                                   </pre></th>
+            </tr>
+            </table>
+        
+            </font>
+    </a>
+    <br>
+    <b> <font size="5">再販する</b></font>
+
+<br><br>
+
+    <!-- TOP画面に戻るリンク -->
+    <a href="{% url 'AD_TOP' %}">管理者TOPに戻る</a>
+    
+{% endblock %}

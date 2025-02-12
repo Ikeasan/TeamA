@@ -1,0 +1,56 @@
+/* venue_list.css */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* li {
+    margin: 15px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+} */
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.venue-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.venue-item {
+    max-width: 400px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.venue-item:hover {
+    transform: scale(1.02);
+}
+/* フロアマップ画像のコンテナ */
+.floor-map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* 親要素に対して幅を最大に */
+    margin: 20px 0;
+}
+
+/* フロアマップ画像のスタイル */
+.floor-map-image {
+    width: 90%; /* 画面幅の90%まで広げる */
+    max-width: 800px; /* 最大800pxまで */
+    height: auto; /* 縦横比を維持 */
+    object-fit: contain; /* 画像の比率を崩さず調整 */
+    border-radius: 10px; /* 角を丸める */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 軽い影を追加 */
+}

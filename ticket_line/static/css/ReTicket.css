@@ -1,0 +1,47 @@
+/* 見出しのスタイル */
+h2 {
+    font-size: 2rem;
+    color: #4E95D9;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 再販マークとタイトルの調整 */
+h2 img {
+    margin-right: 10px;
+}
+
+/* 画像を整列させるためのスタイル */
+a {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 画像間の隙間 */
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* 各ライブ画像のスタイル */
+a img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem; /* モバイルで見やすいサイズに変更 */
+    }
+
+    a {
+        flex-direction: column;
+    }
+
+    a img {
+        max-width: 80%; /* モバイルで画像の最大幅を80%に設定 */
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,12 @@
+a.ticket_link{
+
+    margin: 60px;
+}
+
+@media(max-width: 300px){
+    a.ticket_link{
+        margin: 50px;
+        max-width 70%;
+    }
+
+}

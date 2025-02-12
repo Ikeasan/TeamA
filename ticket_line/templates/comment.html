@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}会場{% endblock %}
+
+{% block content %}
+
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+    {% endblock %}
+
+    <br>
+
+    <form action="/form.php" method="post">
+        <div>
+            <label for="event" class="visually-hidden"></label>
+            <input type="text" size="50" placeholder="イベント" name="event">
+        </div>
+    </form>
+
+    <br>
+
+    <b>
+    <div class="bookmark-container">
+        <a href="{% url 'bookmark' %}">
+            <button type="submit">ブックマークする</button>
+        </a>
+
+        <br>
+        <br>
+
+        <div class="tabs-container">
+            <!-- ラジオボタンとラベルをタブメニューとして使用 -->
+            <input type="radio" name="tab" id="tab1" checked>
+            <label for="tab1" class="tab-label">詳細</label>
+
+            <input type="radio" name="tab" id="tab2">
+            <label for="tab2" class="tab-label">チケット</label>
+
+            <input type="radio" name="tab" id="tab3">
+            <label for="tab3" class="tab-label">会場</label>
+
+            <input type="radio" name="tab" id="tab4">
+            <label for="tab4" class="tab-label">コメント</label>
+
+            <!-- タブコンテンツ -->
+            <div class="tab-content" id="content1">
+                <p>詳細情報がここに表示されます。</p>
+            </div>
+            <div class="tab-content" id="content2">
+                <p>チケット詳細がここに表示されます。</p>
+            </div>
+            <div class="tab-content" id="content3">
+                <p>会場情報がここに表示されます。</p>
+            </div>
+            <div class="tab-content" id="content4">
+                <p>コメント情報がここに表示されます。</p>
+                <form action="/form.php" method="post">
+                    <div>
+                        <img src="image/人のアイコン.png" alt="人間">
+                        <label for="comment" class="visually-hidden"></label>
+                        <input type="text" size="50" placeholder="コメントする" name="comment">
+                    </div>
+                    <b><button type="submit">投稿</button></b>
+                </form>
+            </div>
+        </div>
+    </div>
+    </b>
+
+{% endblock %}

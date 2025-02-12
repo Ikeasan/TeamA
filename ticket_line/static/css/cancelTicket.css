@@ -1,0 +1,27 @@
+.cancel-ticket-container {
+    margin: 20px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.ticket-info-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.ticket-info-table th {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.table {
+    margin: 0 auto;
+}
+
+.cancel-ticket-form {
+    margin: 20px auto;
+    font-size: 1.2rem;
+}

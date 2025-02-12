@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} ＜管理者＞問い合わせ返信 {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/connect.css' %}">
+
+    <div style="border: solid 3px #000;">返信</div>
+    <br>
+
+
+    <br>
+    <ui>
+    <form method="post" enctype="multipart/form-data" action="{% url 'ad_connect_reply' connect.pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">送信</button>
+     </form>
+    </ui>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <!-- TOP画面に戻るリンク -->
+    <a href="{% url 'AD_TOP' %}">管理者TOPに戻る</a>
+
+{% endblock %}

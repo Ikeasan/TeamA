@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}申し込み完了{% endblock %}
+
+{% block content %}
+<h1>申し込み完了</h1>
+<p>申し込みが完了しました。以下の情報を確認してください。</p>
+
+<ul>
+    <li><strong>イベント名:</strong> {{ event.event_name }}</li>
+    <p>申し込み種別: {% if is_resale %}再販{% else %}通常{% endif %}チケット</p>
+    <li><strong>日付:</strong> {{ event.event_time|date:"Y年m月d日 H:i" }}</li>
+    <li><strong>公演場所:</strong> {{ event.place.name }}</li>
+    <li><strong>料金:</strong> ¥{{ event.price }}</li>
+</ul>
+
+<a href="{% url 'event_detail' event.id %}">
+    <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        イベント詳細に戻る
+    </button>
+</a>
+{% endblock %}

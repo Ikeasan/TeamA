@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{%block title%}＜運営者＞ 投稿削除 {% endblock%}
+
+{% block head %}
+
+{% endblock%}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/OPE_del.css' %}">
+
+    <h2>イベント削除</h2>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h3>{{ post.event_name }}</h3>  <!-- Postタイトル -->
+                <p>{{ post.event_time }}</p>  <!-- Postの内容 -->
+
+                <!-- 削除リンク -->
+                <form method="post" action="{% url 'delete_post' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+                </form>
+            </li>
+        {% empty %}
+            <p>現在、表示できるポストはありません。</p>
+        {% endfor %}
+    </ul>
+        <a href="{% url 'ope_top' %}">イベントTOPに戻る</a>
+{% endblock %}

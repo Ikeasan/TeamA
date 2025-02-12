@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}申し込み詳細{% endblock %}
+
+{% block content %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/getTicket2.css' %}">
+{% endblock %}
+<h1>チケット申し込み</h1>
+
+<h3>申し込み詳細</h3>
+<p>以下の情報をご確認の上、申し込みを進めてください。</p>
+<form method="POST" action="{% url 'apply_re_ticket' event.id %}">
+    {% csrf_token %}
+    <ul>
+        <li><strong>イベント名:</strong> {{ event.event_name }}</li>
+        <li><strong>ライブ名:</strong> {{ event.live_name }}</li>
+        <li><strong>日付:</strong> {{ event.live_time|date:"Y-m-d" }}</li>
+        <li><strong>開場時間:</strong> {{ event.open_time|time:"H:i" }}</li>
+        <li><strong>開演時間:</strong> {{ event.event_time|time:"H:i" }}</li>
+        <li><strong>公演場所:</strong> {{ event.place.name }}</li>
+        <li><strong>料金:</strong> ¥{{ event.price }}</li>
+        <li><strong>支払い方法:</strong> 
+            {% if event.payment == 'cash' %}コンビニ支払い
+            {% elif event.payment == 'credit_card' %}クレジットカード
+            {% else %}QR決済{% endif %}
+        </li>
+        <!-- チケット枚数 -->
+        <label for="tickets">枚数:</label>
+        <select id="tickets" name="tickets" required>
+            {% for i in ticket_numbers %}
+                <option value="{{ i }}">{{ i }}枚</option>
+            {% endfor %}
+        </select>
+
+        <li><strong>注意事項:</strong> {{ event.attention|default:"なし" }}</li>
+    </ul>
+
+    <!-- 再販フラグ -->
+    <input type="hidden" name="is_resale" value="true">
+
+    <!-- 利用規約への同意 -->
+    <div>
+        <label>
+            <input type="checkbox" id="agreement" onclick="toggleSubmitButton()"> 
+            利用規約と注意事項に同意します
+        </label>
+    </div>
+
+    <!-- 申し込み完了ボタン -->
+    <div>
+        <button type="submit" id="submit-button" disabled>申し込み完了</button>
+    </div>
+</form>
+
+{% comment %}
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endcomment %}
+
+<script>
+    function toggleSubmitButton() {
+        const agreement = document.getElementById('agreement');
+        const submitButton = document.getElementById('submit-button');
+        submitButton.disabled = !agreement.checked;
+    }
+</script>
+{% endblock %}

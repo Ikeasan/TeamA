@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}＜管理者＞ 再販投稿{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/login.css">
+{% endblock %}
+
+{% block content %}
+    <h1>←           TOP
+    </h1>
+    <div style="border: solid 3px #000;"></div>
+    <br>
+
+    <h1>再販投稿</h1>
+
+    
+    {% comment %} <p>{{ event.event_name }}</p>
+    <img src="/media/{{ event.image }}" alt="Event Image" width="300">
+    <p>{{ event.comment }}</p> {% endcomment %}
+    <br>
+    <br>
+    <div style="border: solid 3px #000;">イベント名 &emsp;<button>再販</button></div>
+    <br>
+    <br>
+    <div style="border: solid 3px #000;">イベント名 &emsp;<button>再販</button></div>
+
+    <br><br>
+    
+    <!-- TOP画面に戻るリンク -->
+    <a href="{% url 'AD_TOP' %}">管理者TOPに戻る</a>
+    
+
+{% endblock %}

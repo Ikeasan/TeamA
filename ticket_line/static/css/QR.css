@@ -1,0 +1,61 @@
+/* セクションのボーダースタイル */
+div[style*="border: solid 1px #4E95D9;"] {
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #4E95D9;
+    width: 80%;
+    max-width: 500px;
+}
+
+/* タイトルのスタイル */
+a {
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+}
+
+/* QRコード表示 */
+img {
+    margin-top: 20px;
+    max-width: 200px; /* QRコード画像の最大幅 */
+    height: auto;
+}
+
+/* テキストブロック */
+a {
+    font-size: 1rem;
+    color: #555;
+    /* line-height: 1.6; */
+    display: block;
+    /* margin-top: 10px; */
+}
+
+/* 日付・時間の表示 */
+a:nth-of-type(2) {
+    font-size: 1rem;
+    color: #4E95D9;
+}
+
+/* QRコードに関する説明文 */
+a:nth-of-type(1) {
+    font-size: 1.5rem;
+    color: #333;
+    /* margin-top: 20px; */
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    a {
+        font-size: 1rem;
+    }
+
+    img {
+        max-width: 80%; /* モバイル画面でQRコード画像の幅を小さく */
+    }
+}
+
+svg{
+    border:3px solid #000000;
+}

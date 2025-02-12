@@ -1,0 +1,62 @@
+/* 全体のレイアウトと背景スタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* ページの見出し (タイトル) */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 各ラベルのスタイル */
+a {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+    display: block;
+    text-align: left;
+    width: 300px; /* 適切な幅を設定 */
+}
+
+/* ボタンの共通スタイル */
+input[type="submit"] {
+    width: 45%;
+    padding: 12px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* アカウント作成ボタンのスタイル */
+input[type="submit"][value="アカウント作成"] {
+    background-color: #4E95D9;
+    color: white;
+}
+
+input[type="submit"][value="アカウント作成"]:hover {
+    background-color: #357ABD;
+}
+
+/* 戻るボタンのスタイル */
+input[type="submit"][value="戻る"] {
+    background-color: #ccc;
+    color: black;
+}
+
+input[type="submit"][value="戻る"]:hover {
+    background-color: #aaa;
+}

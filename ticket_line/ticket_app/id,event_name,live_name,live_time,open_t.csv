@@ -1,0 +1,3 @@
+id,event_name,live_name,live_time,open_time,event_time,place,price,number,limit,payment,period,attention,category,comment,image,created_at
+1,TEST,,2024-11-30 03:32:00,2024-11-30 03:32:00,2024-11-30 03:32:00,草津温泉,60000,2,2,現金,30,キャンセル全額負担,ticket,やひょい,uploads/posts/804bdb8cd66490369a041134b7444b44.jpg,2024-11-28 03:33:54.042652
+2,ピッツァ池本,,2024-12-06 00:30:00,2024-12-06 06:00:00,2024-12-06 06:00:00,53教室,0,5,5,現ナマ,1,池本全額負担,detail,,uploads/posts/28-1-1024x683_EkLHznm.jpg,2024-11-28 05:51:27.253985

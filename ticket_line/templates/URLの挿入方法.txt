@@ -1,0 +1,5 @@
+URLの挿入は
+
+<link rel="stylesheet" href="{% url '名前' %}">　❕
+
+名前は [urls.py](../ticket_app/urls.py)にあります。 name='名前' <- これ

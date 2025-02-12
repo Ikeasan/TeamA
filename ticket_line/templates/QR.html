@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load qr_code %}
+
+{% block title %}QRコード{% endblock %}
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+{%block head%}
+
+{% endblock%}
+        
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/QR.css' %}">
+        <title>QRコード表示</title>
+    </head>
+    <br>
+
+    <br>
+    <h1>QRコード</h1>
+    <br>
+    {% comment %} <div style="border: solid 1px #4E95D9;"></div> {% endcomment %}
+
+    <b style="color:#4E95D9 ">必ずQRコードが表示できる状態でご来場ください</b>
+        <br><br>
+    {% comment %} <img src="image/QRコード1.png" width="20%" alt="QRコード"> {% endcomment %}
+    {% comment %} {% qr_from_text "event_detail post.id " size=10 border=2 %} {% endcomment %}
+    {% url 'ticket_detail' ticket.id as ticket_url %}
+    {% with full_url=request.scheme|add:"://"|add:request.get_host|add:ticket_url %}
+        {{ full_url }}<br><br>  {# デバッグ用にURLを表示 #}
+        {% comment %} {{ ticket.id }}  {% endcomment %}
+        {% qr_from_text full_url size=10 border=2 %}
+    {% endwith %}
+
+    
+
+    <br><br>
+
+
+    <p>イベント名: {{ ticket.post.event_name }}</p>
+    <p> イベント日: {{ ticket.event_date }}</p>
+    <p>座席: {{ ticket.seat_row }}列 {{ ticket.seat_number }}番</p>
+
+
+</html>
+{% endblock %}

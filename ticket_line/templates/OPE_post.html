@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{%load static %}
+
+{% block title %}＜運営者＞投稿{% endblock %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/OPE_post.css' %}">
+
+<h1>イベント投稿フォーム</h1>
+
+<!-- 投稿フォーム -->
+<form method="post" enctype="multipart/form-data" action="{% url 'ope_post' %}">
+    {% csrf_token %}
+    {{ form.as_p }}  
+
+    <button type="submit">投稿</button>
+</form>
+
+<!-- TOP画面に戻るリンク -->
+<a href="{% url 'ope_top' %}">イベントTOPに戻る</a>
+
+{% endblock %}
+
+{% comment %} 
+
+<!-- 投稿フォーム -->
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <!-- イベント名 -->
+    <div>
+        <label for="event_name">イベント名:</label>
+        <input type="text" id="event_name" name="event_name" placeholder="イベント名を入力" required>
+    </div>
+
+    <!-- ライブ日付 -->
+    <div>
+        <label for="live_time">ライブ日付:</label>
+        <input type="datetime-local" id="live_time" name="live_time" required>
+    </div>
+
+    <!-- 開場時間 -->
+    <div>
+        <label for="open_time">開場時間:</label>
+        <input type="datetime-local" id="open_time" name="open_time" required>
+    </div>
+
+    <!-- イベント時間 -->
+    <div>
+        <label for="event_time">イベント時間:</label>
+        <input type="datetime-local" id="event_time" name="event_time" required>
+    </div>
+
+    <!-- 場所 -->
+    <div>
+        <label for="place">場所:</label>
+        <input type="text" id="place" name="place" placeholder="場所を入力" required>
+    </div>
+
+    <!-- 料金 -->
+    <div>
+        <label for="price">料金:</label>
+        <input type="number" id="price" name="price" placeholder="例: 5000" required>
+    </div>
+
+    <!-- 枚数 -->
+    <div>
+        <label for="number">チケット枚数:</label>
+        <input type="number" id="number" name="number" placeholder="例: 100" required>
+    </div>
+
+    <!-- 申し込み制限 -->
+    <div>
+        <label for="limit">申し込み制限:</label>
+        <input type="number" id="limit" name="limit" placeholder="例: 4" required>
+    </div>
+
+    <!-- 支払い方法 -->
+    <div>
+        <label for="payment">支払い方法:</label>
+        <select id="payment" name="payment" required>
+            <option value="credit">クレジットカード</option>
+            <option value="bank">銀行振込</option>
+            <option value="cash">現金</option>
+        </select>
+    </div>
+
+    <!-- 販売期間 -->
+    <div>
+        <label for="period">販売期間 (日数):</label>
+        <input type="number" id="period" name="period" placeholder="例: 30" required>
+    </div>
+
+    <!-- 注意事項 -->
+    <div>
+        <label for="attention">注意事項:</label>
+        <textarea id="attention" name="attention" rows="4" cols="40" placeholder="注意事項を入力"></textarea>
+    </div>
+
+    <!-- 詳細 -->
+    <div>
+        <label for="description">イベントの詳細:</label>
+        <textarea id="description" name="description" rows="5" cols="50" placeholder="イベントの詳細を入力"></textarea>
+    </div>
+
+    <!-- 画像アップロード -->   
+    <div>
+        <label for="image">画像アップロード:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+    </div>
+
+    <!-- 投稿ボタン -->
+    <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+{% endcomment %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}支払い完了{% endblock %}
+    
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">決済が完了しました</h1>
+        <br>
+        <br>
+        <a>お支払いありがとうございます</a>
+        <br>
+        <br>
+        <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <input type="hidden" name="post_id" value="{{ post.id }}">
+
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">チケットを保存</button>
+    </form>
+</div>
+{% endblock %}

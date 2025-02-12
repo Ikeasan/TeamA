@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}【再販】決済{% endblock %}
+{% block content %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/payment.css' %}">
+{% endblock %}
+
+{% for ticket in tickets %}
+<form method="post" action="{% url 're_pay_done' ticket.id %}">
+    {% csrf_token %}
+    {% comment %} <label for="number">購入枚数:</label>
+    <input type="number" name="number" id="number" min="1" max="{{ ticket.remaining_tickets }}" required>
+    <input type="hidden" name="ticket_id" value="{{ ticket.id }}"> {% endcomment %}
+    <div style="border: Solid 3px #000;">支払い方法を選択</div>
+    <br>
+    <font size="5">
+        <input type="radio" name="pay" value="credit" required>クレジットカード<br>
+        <input type="radio" name="pay" value="cashless" required>電子決済<br>
+        <input type="radio" name="pay" value="convenience" required>コンビニ払い<br>
+    </font>
+    <input type="submit" value="購入確定">
+</form>
+<hr>
+{% endfor %}
+
+{% endblock %}

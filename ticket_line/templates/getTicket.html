@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}チケット申込{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/getTicket.css' %}">
+
+    <form action="/form.php" method="post">
+        <div>
+            <label for="event" class="visually-hidden"></label>
+            <input type="text" size="50"  placeholder="イベント" name="event">
+        </div>
+    </form>
+
+    <br>
+
+
+    <b>
+
+    <a type="submit"><button>ブックマークする</button></a>
+
+    <br>
+    <br>
+    
+    
+    <body>
+        <div class="tabs-container">
+            <!-- ラジオボタンとラベルをタブメニューとして使用 -->
+            <input type="radio" name="tab" id="tab1" checked>
+            <label for="tab1" class="tab-label">詳細</label>
+    
+            <input type="radio" name="tab" id="tab2">
+            <label for="tab2" class="tab-label">チケット</label>
+    
+            <input type="radio" name="tab" id="tab3">
+            <label for="tab3" class="tab-label">会場</label>
+    
+            <input type="radio" name="tab" id="tab4">
+            <label for="tab4" class="tab-label">コメント</label>
+    
+            <!-- タブコンテンツ -->
+            <div class="tab-content" id="content1">
+                <p>詳細情報がここに表示されます。</p>
+            </div>
+            <div class="tab-content" id="content2">
+                <a>
+                    <font size="10">○○Live</font>
+                    <br>
+                    <font size="5">
+                        <img src="image/画像.png" width="30%" alt="ライブ">
+                        <br>
+                        ライブの文章です
+                        <br>
+                        日時: 20XX:N(月)
+                        <br>
+                        会場: 土星武道館
+                        <br>
+                        料金:
+                        <br> 
+                        スタンディング席 30000円
+                        <br>
+                        指定席 50000円
+                    </font>
+                </a>
+                <br>
+                <br>
+
+                <a href="TicketWG.html">
+                    <font style="color: #4E95D9;">申し込みはこちら</font>
+                </a>
+                <br>
+                <br>
+                
+            </div>
+            <div class="tab-content" id="content3">
+                <p>会場情報がここに表示されます。</p>
+            </div>
+            <div class="tab-content" id="content4">
+                <p>コメント情報がここに表示されます。</p>
+            </div>
+        </div>
+    
+    <br>
+    <br>
+    <a href="{% url 'ticket_wg' %}" class="btn" >当落確認</a>
+    <button>再販</button>
+</body>
+</html>
+{% endblock %}

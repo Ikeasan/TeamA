@@ -1,0 +1,31 @@
+/* 全体のセンタリングを維持 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* ボタンのスタイル */
+input[type="submit"] {
+    width: 50%;
+    padding: 12px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4E95D9;
+    color: white;
+    text-align: center;
+}
+
+input[type="submit"]:hover {
+    background-color: #357ABD;
+}

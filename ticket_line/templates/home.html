@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}ホーム{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+            <h1>{{ user.username }}さん、ようこそ！</h1>
+            <p class="lead">ログインが成功しました。</p>
+             <!-- 検索フォーム -->
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form method="get" action="{% url 'event_search_results' %}" class="d-flex mb-4">
+                        <input type="text" name="query" class="form-control me-2" placeholder="イベントを検索">
+                        <button type="submit" class="btn btn-primary">検索</button>
+                    </form>
+                </div>
+            </div>
+            <!-- 検索結果表示 -->
+            {% if events %}
+            <h2 class="text-center mb-3">検索結果</h2>
+            <ul class="list-group">
+                {% for event in events %}
+                    <div class="event-item" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                        <h2>{{ event.event_name }}</h2>
+                        {% if post.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.event_name }}" style="width: 200px; height: auto;">
+                        {% endif %}
+                        <p>開催日: {{ event.event_time }}</p>
+                        <a href="{% url 'event_detail' post.id %}" class="btn btn-primary">詳細を見る</a>
+                    </div>
+
+<!--
+                    <li class="list-group-item">
+                        <h5>{{ event.event_name }}</h5>
+                        <p>{{ event.comment }}</p>
+                        <small>日付: {{ event.live_time }}</small>
+                    </li>-->
+                {% endfor %}
+            </ul>
+        {% elif query %}
+            <p class="text-center">「{{ query }}」に一致するイベントはありません。</p>
+        {% endif %}
+    </div>
+
+
+            <h1>イベント一覧</h1>
+                <div class="event-list">
+                    {% for post in posts %}
+                        <div class="event-item" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                            <h2>{{ post.event_name }}</h2>
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" alt="{{ post.event_name }}" style="width: 200px; height: auto;">
+                            {% endif %}
+                            <p>開催日: {{ post.event_time }}</p>
+                            <a href="{% url 'event_detail' post.id %}" class="btn btn-primary">詳細を見る</a>
+                        </div>
+                    {% empty %}
+                        <p>現在、登録されたイベントはありません。</p>
+                    {% endfor %}
+                </div>
+
+            <!-- ユーザー情報 -->
+            {% comment %} <div class="card mt-4">
+                <div class="card-header">
+                    プロフィール情報
+                </div>
+                <div class="card-body">
+                    <p><strong>ユーザー名:</strong> {{ user.username }}</p>
+                    <p><strong>メールアドレス:</strong> {{ user.email }}</p>
+                </div>
+            </div>
+
+            <!-- アクション -->
+            <div class="mt-4">
+                <a href="{% url 'account_logout' %}" class="btn btn-danger">ログアウト</a>
+                <a href="{% url 'account_change_password' %}" class="btn btn-primary">パスワードを変更</a>
+            </div> {% endcomment %}
+
+
+
+            <!--イベント情報-->
+           
+            {% comment %} <div style="border: solid 3px #000;"></div>
+    
+            <form action="/form.php" method="post">
+                <div>
+                    <label for="event" class="visually-hidden"></label>
+                    <form action="{% url 'event' %}" method="get" class="mx-auto">
+                        <input type="text" size="50" placeholder="イベント検索" name="event">
+                        <button type="submit">検索</button>
+                    </form>
+                </div>
+            </form>
+        
+            <br>
+            <a>
+                <b><font size="10">←</font></b>
+                <li class="nav-item">
+                    {% load static %}
+                    <a class="nav-link" href="{% url 'event' %}">
+                        <img src="{% static 'png/MAMA2024.png' %}" width="30%" alt="MAMA2024" title="最新のライブの画像が出る">
+                    </a>
+                </li>
+                <b><font size="10">→</font></b>
+            </a> {% endcomment %}
+        
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
