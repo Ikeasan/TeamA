@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'ticket_line',
     'ticket_app',  # カスタムアプリケーション
     'qr_code',#QRコード
     # 'ticket_app.apps.TicketAppConfig',
@@ -62,7 +63,7 @@ TEMPLATES = [
 ]
 
 # WSGIアプリケーション（エラーが出るためいったん消してる）
-WSGI_APPLICATION = 'ticket_line.wsgi.application'
+# WSGI_APPLICATION = 'ticket_line.wsgi.application'
 
 # データベース設定
 DATABASES = {
